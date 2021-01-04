@@ -3,14 +3,19 @@ package com.board.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.board.domain.Member;
 import com.board.repository.MemberRepository;
 import com.board.repository.MemoryMemberRepository;
+
 
 public class MemberService {
 
 	//Dependency Injection
 	private final MemberRepository memberRepository;
+	
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
