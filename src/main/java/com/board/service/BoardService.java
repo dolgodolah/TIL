@@ -1,12 +1,21 @@
 package com.board.service;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.board.domain.repository.BoardRepository;
+import com.board.dto.BoardDTO;
 
-import com.board.domain.BoardDTO;
+import javax.transaction.Transactional;
 
-public interface BoardService {
-	public boolean registerBoard(BoardDTO params);
-	public BoardDTO getBoardDetail(Long idx);
-	public boolean deleteBoard(Long idx);
-	public List<BoardDTO> getBoardList();
+@Service
+public class BoardService {
+    private BoardRepository boardRepository;
+
+    public BoardService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
+    }
+
+    @Transactional
+    public Long savePost(BoardDTO boardDTO) {
+        return boardRepository.save(boardDTO.toEntity()).getId();
+    }
 }
