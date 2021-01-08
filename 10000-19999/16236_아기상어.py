@@ -33,14 +33,19 @@ def bfs(i,j):
                 queue.append((nx,ny,size,distance+1))
                 #상어가 먹이 사냥을 할 수 있는 좌표이면 타겟에 추가
                 if 1<=graph[nx][ny]<size:
+                    #bfs이기 때문에 처음 target에 담길 때 거리가 가장 짧은 먹이부터 담긴다.
+                    #그런 먹이가 여러 마리이면 일단 추가.
                     if target:
                         if target[0][2]==distance+1:
                             target.append((nx,ny,distance+1))
                     else:
                         target.append((nx,ny,distance+1))
+    #타겟이 여러마리이면 정렬을 통해
+    #가장 위에 있는 물고기, 그러한 물고기가 여러마리라면, 가장 왼쪽에 있는 물고기를 먹게끔 한다.
     if target:
         target.sort()
         return target[0]
+    #타겟이 없으면 False를 반환해 종료되게끔 한다.
     else:
         return False
 

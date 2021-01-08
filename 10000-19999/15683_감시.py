@@ -12,20 +12,18 @@ for _ in range(n):
 def set_cctv(x,y,direction,temp_graph):
     while True:
         if 0<=x+dx[direction]<n and 0<=y+dy[direction]<m:
-            nx = x + dx[direction]
-            ny = y + dy[direction]
-            if temp_graph[nx][ny]==0:
-                temp_graph[nx][ny]=9
-            elif temp_graph[nx][ny]==6:
+            x = x + dx[direction]
+            y = y + dy[direction]
+            if temp_graph[x][y]==0: #사각지대(0)라면 시야를 밝힌다(9).
+                temp_graph[x][y]=9
+            elif temp_graph[x][y]==6: #벽(6)과 부딪히면 멈춘다.
                 break
-            # elif 1<=temp_graph[nx][ny]<=5:
-            #     continue
-            x,y=nx,ny
         else:
             break
 
 def check(temp_graph):
     cnt = 0
+    #사각지대의 수를 반환한다.
     for i in temp_graph:
         cnt += i.count(0)
     return cnt
@@ -35,24 +33,26 @@ def dfs(cnt):
     if cnt==len(cctv):#cctv의 개수만큼 방향을 다 지정하면
         temp_graph = deepcopy(graph)
         for i in range(len(cctv)):
-            x, y = cctv[i]
-            if graph[x][y]==1:
+            x, y = cctv[i]#cctv마다 좌표값을 꺼낸다.
+            if graph[x][y]==1:#해당 좌표에 있는 cctv가 1번cctv
                 set_cctv(x,y,direction[i],temp_graph)
-            elif graph[x][y]==2:
+            elif graph[x][y]==2:#해당 좌표에 있는 cctv가 2번cctv
                 set_cctv(x,y,direction[i],temp_graph)
                 set_cctv(x,y,(direction[i]+2)%4,temp_graph)
-            elif graph[x][y]==3:
+            elif graph[x][y]==3:#해당 좌표에 있는 cctv가 3번cctv
                 set_cctv(x,y,direction[i],temp_graph)
                 set_cctv(x,y,(direction[i]+1)%4,temp_graph)
-            elif graph[x][y]==4:
+            elif graph[x][y]==4:#해당 좌표에 있는 cctv가 4번cctv
                 set_cctv(x,y,direction[i],temp_graph)
                 set_cctv(x,y,(direction[i]+1)%4,temp_graph)
                 set_cctv(x,y,(direction[i]+2)%4,temp_graph)
         
+        #모든 cctv로 사각지대를 제거했을 때 사각지대의 수가 최소값이면 answer을 갱신한다.
         answer = min(check(temp_graph),answer)
         return
 
-    for i in range(4):#cctv마다 방향 지정
+    #cctv마다 방향 지정한다. 1~4번 CCTV는 4가지 경우의 수가 있다.
+    for i in range(4):
         direction.append(i)
         dfs(cnt+1)
         direction.pop()
@@ -65,25 +65,24 @@ for i in range(n):
         if graph[i][j]==1 or graph[i][j]==2 or graph[i][j]==3 or graph[i][j]==4:
             cctv.append((i,j))
 
+#5번 CCTV는 경우의 수가 하나밖에 없기때문에 사각지대 바로 제거한다.
 for x in range(n):
     for y in range(m):
         if graph[x][y]==5:
             for i in range(4):
-                tx,ty=x,y
+                nx,ny=x,y
                 while True:
-                    if 0<=tx+dx[i]<n and 0<=ty+dy[i]<m:
-                        nx = tx+dx[i]
-                        ny = ty+dy[i]
+                    if 0<=nx+dx[i]<n and 0<=ny+dy[i]<m:
+                        nx = nx+dx[i]
+                        ny = ny+dy[i]
                         if graph[nx][ny]==0:
-                            print(nx,ny)
                             graph[nx][ny]=9
                         elif graph[nx][ny]==6:
                             break
-                        tx,ty=nx,ny
                     else:
                         break
 
-for i in graph:
-    print(i)
+# for i in graph:
+#     print(i)
 dfs(0)
 print(answer)
