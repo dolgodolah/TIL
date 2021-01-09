@@ -33,7 +33,7 @@ public class BoardService {
     	for(Board board : boardList) {
     		BoardDTO boardDTO = BoardDTO.builder()
     				.id(board.getId())
-    				.author(board.getAuthor())
+    				.writer(board.getWriter())
     				.title(board.getTitle())
     				.content(board.getContent())
     				.createdDate(board.getCreatedDate())
@@ -49,7 +49,7 @@ public class BoardService {
     	
     	BoardDTO boardDTO = BoardDTO.builder()
     			.id(board.getId())
-    			.author(board.getAuthor())
+    			.writer(board.getWriter())
     			.title(board.getTitle())
     			.content(board.getContent())
     			.createdDate(board.getCreatedDate())

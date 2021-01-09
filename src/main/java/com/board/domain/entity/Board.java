@@ -22,7 +22,7 @@ public class Board {
     private Long id;
 
     @Column(length = 10, nullable = false)
-    private String author;
+    private String writer;
 
     @Column(length = 100, nullable = false)
     private String title;
@@ -38,9 +38,9 @@ public class Board {
     private LocalDateTime modifiedDate;
 
     @Builder
-    public Board(Long id, String author, String title, String content) {
+    public Board(Long id, String writer, String title, String content) {
         this.id = id;
-        this.author = author;
+        this.writer = writer;
         this.title = title;
         this.content = content;
     }

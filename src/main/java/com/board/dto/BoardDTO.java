@@ -12,7 +12,7 @@ import com.board.domain.entity.Board;
 @NoArgsConstructor
 public class BoardDTO {
     private Long id;
-    private String author;
+    private String writer;
     private String title;
     private String content;
     private LocalDateTime createdDate;
@@ -21,7 +21,7 @@ public class BoardDTO {
     public Board toEntity() {
         Board build = Board.builder()
                 .id(id)
-                .author(author)
+                .writer(writer)
                 .title(title)
                 .content(content)
                 .build();
@@ -29,9 +29,9 @@ public class BoardDTO {
     }
 
     @Builder
-    public BoardDTO(Long id, String author, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate) {
+    public BoardDTO(Long id, String writer, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.id = id;
-        this.author = author;
+        this.writer = writer;
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
