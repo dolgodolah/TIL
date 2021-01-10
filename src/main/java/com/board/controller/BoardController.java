@@ -29,18 +29,19 @@ public class BoardController {
 	public String list(Model model) {
 		List<BoardDTO> boardList = boardService.getBoardList();
 		//새로 쓴 글이 상단이 출력될 수 있도록 정렬 
-		Collections.sort(boardList, new Comparator<BoardDTO>() {
-			@Override
-			public int compare(BoardDTO o1, BoardDTO o2) {
-				// TODO Auto-generated method stub
-				if (o1.getId() > o2.getId()) {
-					return -1;
-				}else if (o1.getId() < o2.getId()) {
-					return 1;
-				}
-				return 0;
-			}
-		});
+		Collections.sort(boardList, (a,b)->b.getId().intValue()-a.getId().intValue());
+//		Collections.sort(boardList, new Comparator<BoardDTO>() {
+//			@Override
+//			public int compare(BoardDTO o1, BoardDTO o2) {
+//				// TODO Auto-generated method stub
+//				if (o1.getId() > o2.getId()) {
+//					return -1;
+//				}else if (o1.getId() < o2.getId()) {
+//					return 1;
+//				}
+//				return 0;
+//			}
+//		});
 		model.addAttribute("postList",boardList);
 		return "board/list";
 	}
