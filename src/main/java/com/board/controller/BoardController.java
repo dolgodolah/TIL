@@ -1,10 +1,13 @@
 package com.board.controller;
 
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +28,19 @@ public class BoardController {
 	@GetMapping("/list")
 	public String list(Model model) {
 		List<BoardDTO> boardList = boardService.getBoardList();
+		//새로 쓴 글이 상단이 출력될 수 있도록 정렬 
+		Collections.sort(boardList, new Comparator<BoardDTO>() {
+			@Override
+			public int compare(BoardDTO o1, BoardDTO o2) {
+				// TODO Auto-generated method stub
+				if (o1.getId() > o2.getId()) {
+					return -1;
+				}else if (o1.getId() < o2.getId()) {
+					return 1;
+				}
+				return 0;
+			}
+		});
 		model.addAttribute("postList",boardList);
 		return "board/list";
 	}
@@ -58,6 +74,11 @@ public class BoardController {
 	public String update(BoardDTO boardDTO) {
 		boardService.savePost(boardDTO);
 		return "redirect:/post/" + boardDTO.getId();
-		
+	}
+	
+	@DeleteMapping("/post/{id}")
+	public String deletePost(@PathVariable("id") Long id) {
+		boardService.deletePost(id);
+		return "redirect:/list";
 	}
 }
