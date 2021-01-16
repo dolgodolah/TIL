@@ -10,8 +10,10 @@
 
 코딩테스트 준비 (BOJ, Programmers, SWEA 문제풀이)
 
-[algorithm](https://github.com/dolgodolah/TIL/tree/master/algorithm)
+- [algorithm](https://github.com/dolgodolah/TIL/tree/master/algorithm) ([BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ)), ([SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA))
 
 ## Java
 
 ## Spring
+- [Gradle vs Maven](https://github.com/dolgodolah/TIL/blob/master/spring/Gradle%20vs%20Maven.md)
+- [@NotNull vs @Column(nullable=false)](https://github.com/dolgodolah/TIL/blob/master/spring/jpa%20%40NotNull%20vs%20%40Column(nullable%20%3D%20false).md)
