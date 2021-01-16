@@ -8,10 +8,10 @@
 
 ## Algorithm
 
-코딩테스트 준비 (BOJ, Programmers, SWEA 문제풀이)
 
-- [algorithm](https://github.com/dolgodolah/TIL/tree/master/algorithm) ([BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ)), ([SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA))
 
+- 코딩테스트 준비를 위한 [BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ), Programmers, [SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA), [HackerRank](https://github.com/dolgodolah/TIL/tree/master/algorithm/HackerRank) 문제 연습
+- 1월 17일 HackerRank 추가, 영문 문제에 익숙해지자
 ## Java
 
 ## Spring
