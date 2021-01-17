@@ -21,8 +21,9 @@ def plusMinus(arr):
             negative+=1
         else:
             zero+=1
-    test = format(negative/len(arr),".6f")
-    print(test)
+    print('%.6f'%positive/len(arr))        
+    print('%.6f'%negative/len(arr))
+    print('%.6f'%zero/len(arr))
     
 
 if __name__ == '__main__':
