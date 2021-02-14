@@ -8,7 +8,7 @@
 
 <del> 1월 목표 : 코딩테스트 준비 - 100문제
 
-2월 목표 : 코딩테스트 준비 - 200문제
+<del> 2월 목표 : 코딩테스트 준비 - 200문제
 
 3월 목표 : 코딩테스트 준비 - 300문제, 서버 공부
 
@@ -21,6 +21,10 @@
 
 - 코딩테스트 준비를 위한 [BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ), [Programmers](https://github.com/dolgodolah/TIL/tree/master/algorithm/Programmers), [SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA) 문제 연습
 - 1월 17일 [HackerRank](https://github.com/dolgodolah/TIL/tree/master/algorithm/HackerRank) 추가, 영어 지문에 익숙해지자
+
+## Git
+- [깃허브 대표언어 변경법](https://github.com/dolgodolah/TIL/blob/master/git/%EA%B9%83%ED%97%88%EB%B8%8C%20%EB%8C%80%ED%91%9C%EC%96%B8%EC%96%B4%20%EB%B3%80%EA%B2%BD.md)
+
 ## Java
 
 ## REST
@@ -30,3 +34,4 @@
 ## Spring
 - [Gradle vs Maven](https://github.com/dolgodolah/TIL/blob/master/spring/Gradle%20vs%20Maven.md)
 - [@NotNull vs @Column(nullable=false)](https://github.com/dolgodolah/TIL/blob/master/spring/jpa%20%40NotNull%20vs%20%40Column(nullable%20%3D%20false).md)
+- [Thymeleaf 문법](https://github.com/dolgodolah/TIL/blob/master/spring/thymeleaf%20%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95.md)
