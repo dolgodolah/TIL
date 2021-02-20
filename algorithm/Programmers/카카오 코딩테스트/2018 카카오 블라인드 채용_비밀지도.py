@@ -1,6 +1,37 @@
-#10진수를 2진수로 표현하는 함수 bin
-#bin(10) -> 0b1010, bin(10)[2::] -> 1010
+# 10진수를 2진수로 표현하는 함수 bin
+# bin(10) -> 0b1010, bin(10)[2::] -> 1010
 
+# arr1[i]와 arr2[i]의 값을 or연산을 하여 나온 값을 2진수로 치환하면 된다.
+# or연산을 통해 나온 값들은 이진수로 변환했을 때의 길이가 n이하라고 조건에서 나왔기때문에
+# for _ in range(n):
+#   if num%2==0:
+#       temp=" "+temp
+#   else:
+#       temp="#"+temp
+#   num//=2
+#
+# 위와같이 n번 수행해주면 된다.
+
+# 새로운 풀이
+def solution(n,arr1,arr2):
+    answer=[]
+    for i in range(n):
+        a=arr1[i]
+        b=arr2[i]
+        num=a|b
+        temp=''
+        for _ in range(n):
+            if num%2==0:
+                temp=" "+temp
+            else:
+                temp="#"+temp
+            num//=2
+        answer.append(temp)
+    return answer
+
+
+
+# 새싹 시절 풀이
 def solution(n, arr1, arr2):
     answer = []
     map1,map2=[],[] #10진수로 주어진 arr1,arr2를 2진수로 바꿔 저장할 공간이다.
@@ -18,12 +49,7 @@ def solution(n, arr1, arr2):
             for _ in range(n-len(temp)):
                 temp='0'+temp
         map2.append(temp)
-    # for i in map1:
-    #     print(i)
-    # print()
-    # for i in map2:
-    #     print(i)
-    # print()
+
     new_map=[[' ']*n for _ in range(n)] #map1과 map2를 겹쳐 암호를 해독한 지도
     for i in range(n):
         for j in range(n):
@@ -38,5 +64,6 @@ def solution(n, arr1, arr2):
         answer.append(temp)
 
     return answer
+            
 
 print(solution(5,[9, 20, 28, 18, 11],[30, 1, 21, 17, 28]))
