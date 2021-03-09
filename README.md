@@ -35,3 +35,4 @@
 - [Gradle vs Maven](https://github.com/dolgodolah/TIL/blob/master/spring/Gradle%20vs%20Maven.md)
 - [@NotNull vs @Column(nullable=false)](https://github.com/dolgodolah/TIL/blob/master/spring/jpa%20%40NotNull%20vs%20%40Column(nullable%20%3D%20false).md)
 - [Thymeleaf 문법](https://github.com/dolgodolah/TIL/blob/master/spring/thymeleaf%20%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95.md)
+- [JPA 복합키 설정](https://github.com/dolgodolah/TIL/blob/master/spring/JPA%20%EB%B3%B5%ED%95%A9%ED%82%A4%20%EC%84%A4%EC%A0%95.md)
