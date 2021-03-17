@@ -8,7 +8,6 @@ for t in range(1,T+1):
             if visited[board[i][j]]==False:
                 visited[board[i][j]]=True
             else:
-                print("TEST")
                 return False
         return True
 
@@ -18,7 +17,6 @@ for t in range(1,T+1):
             if visited[board[j][i]]==False:
                 visited[board[j][i]]=True
             else:
-                print("TEST")
                 return False
         return True
 
@@ -31,7 +29,6 @@ for t in range(1,T+1):
                         if visited[board[k][l]]==False:
                             visited[board[k][l]]=True
                         else:
-                            print("TST")
                             return False
         return True
 
@@ -45,4 +42,4 @@ for t in range(1,T+1):
     if squre_check()==False:
         answer=0
 
-    print(answer)
+    print(f"#{t} {answer}")
