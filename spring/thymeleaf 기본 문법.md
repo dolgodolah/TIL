@@ -22,12 +22,16 @@ th:[속성]="서버 전달 받은 값 또는 조건식"
 
 <p th:each="user : ${users}" th:text="${user.name}"></p> <!-- 반복문 -->
 
+<li th:classappend="${condition} == 1 ? 'active'"><a href="/"></a> <!-- condition이 1이면 "/" 링크를 가진 'active' 클래스 추가 -->
+<li th:classappend="${condition} == 2 ? 'active'"><a href="/about"></a> <!-- 상황에 따라 동적으로 class 추가 -->
 ```
 
 ## 그 외 정보
 
-<input type="text" >에서는 th:value, <textarea type="text"></textarea>에서는 th:text를 사용한다.
-```
+
+input은 th:value, textareas는 th:text를 사용한다.
+
+```html
 <input type="text" name="writer" th:value="${post.writer}">
 <textarea type="text" name="content" th:text="${post.content}"></textarea>
 ```
