@@ -11,6 +11,8 @@
 # +	메모리에 저장된 값에 1을 더한다. 만약 더하기 전 값이 15이라면 0으로 바꾼다.
 # -	메모리에 저장된 값에 1을 뺀다. 만약 빼기 전 값이 0이라면 15로 바꾼다.
 
+
+# '?' 문자가 상하좌우로 방향을 바꾸는 명령이기 때문에 visited처리를 방향에 따라 해줘야한다.
 from collections import deque
 def bfs(x,y,memory,direction):
     queue=deque()
