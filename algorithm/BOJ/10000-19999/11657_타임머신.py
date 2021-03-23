@@ -8,7 +8,6 @@
 # 음의 사이클이 존재하지 않으면 dist테이블을 출력해준다. 갱신된적 없는 노드는 방문하지 못하는 노드이므로 -1을 출력한다.
 N,M=map(int,input().split())
 graph=[[] for _ in range(N+1)]
-
 for _ in range(M):
     a,b,c=map(int,input().split())
     graph[a].append((b,c))
