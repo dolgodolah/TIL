@@ -1,28 +1,40 @@
-# 파이썬의 heapq 라이브러리를 사용하여 쉽게 풀이하였다.
-# minheqp만 구현되기때문에 최댓값을 제거할 때는 remove(max(queue))를 사용했다.
 from heapq import heappop, heappush
 def solution(operations):
     answer = []
-    queue = []
+    min_heap=[]
+    max_heap=[]
+    nums=dict()
     for operation in operations:
-        ls = operation.split(" ")
-        if ls[0]=='I':
-            num = int(ls[1])
-            heappush(queue,num)
-        elif ls[0]=='D' and ls[1]=='-1':
-            if queue:
-                heappop(queue)
-        elif ls[0]=='D' and ls[1]=='1':
-            if queue:
-                queue.remove(max(queue))
-    if queue:
-        answer = [max(queue),min(queue)]
+        operation=operation.split()
+        if operation[0]=='I':
+            heappush(min_heap,int(operation[1]))
+            heappush(max_heap,-int(operation[1]))
+            if int(operation[1]) in nums:
+                nums[int(operation[1])]+=1
+            else:
+                nums[int(operation[1])]=1
+        else:
+            if operation[1]=='-1':
+                while min_heap:
+                    tmp=heappop(min_heap)
+                    if tmp in nums:
+                        nums[tmp]-=1
+                        if nums[tmp]==0:
+                            del nums[tmp]
+                        break
+
+            else:
+                while max_heap:
+                    tmp=-heappop(max_heap)
+                    if tmp in nums:
+                        nums[tmp]-=1
+                        if nums[tmp]==0:
+                            del nums[tmp]
+                        break
+    if nums:
+        answer=[max(nums),min(nums)]
     else:
-        answer = [0,0]
-
-     
-
+        answer=[0,0]
     return answer
-
-# print(solution(["I 7","I 5","I -5","D -1"]))
 print(solution(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"]))
+# print(solution(["I 7","I 5","I -5","D -1"]))
