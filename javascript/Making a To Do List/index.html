@@ -4,27 +4,34 @@
 <head>
     <title>Something</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 
 </head>
 
 <body>
-    <div class=js-clock>
-        <h1>00:00</h1>
+    <section class="center">
+        <div class="js-clock clock">
+            <h1 class="clock__text">00:00</h1>
+        </div>
+        <div class="js-name name"></div>
+        <div>
+            <form class="js-toDoForm">
+                <input type="text" placeholder="Write a to do">
+            </form>
+            <ul class="js-toDoList list"></ul>
+        </div>
+    </section>
+
+    <div class="js-weather weather">
+        <span class="weather__text"></span>
     </div>
-    <form class="js-form form">
-        <input type="text" placeholder="What is your name?">
-    </form>
-    <h4 class="js-greetings greetings"></h4>
-    <form class="js-toDoForm">
-        <input type="text" placeholder="Write a to do">
-    </form>
-    <ul class="js-toDoList">
-    </ul>
-    <script src="clock.js"></script>
-    <script src="gretting.js"></script>
-    <script src="todo.js"></script>
-    <script src="bg.js"></script>
+
+    <span class="js-weather"></span>
+    <script src="js/clock.js"></script>
+    <script src="js/gretting.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/bg.js"></script>
+    <script src="js/weather.js"></script>
 </body>
 
 </html>

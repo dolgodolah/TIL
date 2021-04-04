@@ -1,14 +1,13 @@
-const toDoForm = document.querySelector(".js-toDoForm");
-const toDoInput = toDoForm.querySelector("input");
-const toDoList = document.querySelector(".js-toDoList");
-
+const form = document.querySelector(".js-toDoForm");
+const input = document.querySelector("input");
+const list = document.querySelector(".js-toDoList");
 const TODOS_LS = 'toDos';
 let toDos = [];
 
 function deleteToDo(event) {
     const btn = event.target;
     const li = btn.parentNode;
-    toDoList.removeChild(li);
+    list.removeChild(li);
 
     //toDo.id가 li.id(삭제된 id)와 다른 것만 cleanToDos에 담는다.
     const cleanToDos = toDos.filter(function(toDo) {
@@ -32,24 +31,25 @@ function paintToDo(text) {
     //      <span>text</span>
     //  </li>
     const li = document.createElement("li");
-    const delBtn = document.createElement("button");
-    const span = document.createElement("span");
-    const newId = toDos.length + 1;
+    li.className = "toDo";
+    li.id = toDos.length + 1;
 
     //delBtn은 click되면 deleteToDo를 호출한다.
+    const delBtn = document.createElement("span");
+    delBtn.className = "toDo__button";
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
 
+    const span = document.createElement("span");
     span.innerText = text;
     li.appendChild(delBtn);
     li.appendChild(span);
-    li.id = newId;
-    toDoList.appendChild(li);
+    list.appendChild(li);
 
     //toDo를 하나의 객체로 만들어 toDos 리스트에 push
     const toDoObj = {
         text: text,
-        id: newId
+        id: toDos.length + 1
     };
     toDos.push(toDoObj);
 }
@@ -57,10 +57,10 @@ function paintToDo(text) {
 
 function handleSubmit(event) {
     event.preventDefault(); //submit 발생 시 기본적으로 발생하는 이벤트를 막는다.
-    const currentValue = toDoInput.value;
+    const currentValue = input.value;
     paintToDo(currentValue);
     saveToDos();
-    toDoInput.value = "";
+    input.value = "";
 }
 
 function loadToDos() {
@@ -80,9 +80,8 @@ function loadToDos() {
 
 function init() {
     loadToDos();
-
     //toDos가 load된 후에는 submit을 기다린다. submit 발생 시 handleSubmit 호출.
-    toDoForm.addEventListener("submit", handleSubmit);
+    form.addEventListener("submit", handleSubmit);
 }
 
 init();

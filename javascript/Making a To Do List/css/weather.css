@@ -1,0 +1,7 @@
+.weather {
+    position: absolute;
+    font-style: italic;
+    font-size: 15px;
+    top: 25px;
+    right: 25px;
+}
