@@ -9,10 +9,7 @@
 지난 목표
 - <del> 코딩테스트 준비 - 100문제(1월)
 - <del> 코딩테스트 준비 - 200문제(2월)
-
-3월 목표
 - <del> 코딩테스트 준비 - 300문제,
-- 서버 공부
 
 4월 목표
 - 토이프로젝트(TodayMusic, StudyClub...) 개발
@@ -31,7 +28,8 @@
 ## Git
 - [깃허브 대표언어 변경법](https://github.com/dolgodolah/TIL/blob/master/git/%EA%B9%83%ED%97%88%EB%B8%8C%20%EB%8C%80%ED%91%9C%EC%96%B8%EC%96%B4%20%EB%B3%80%EA%B2%BD.md)
 
-## Java
+## Javascript
+- [To Do List (vanilla JS)](https://github.com/dolgodolah/TIL/tree/master/javascript/Making%20a%20To%20Do%20List)
 
 ## REST
 - [REST란?](https://github.com/dolgodolah/TIL/blob/master/REST/REST%EB%9E%80.md)
@@ -42,3 +40,4 @@
 - [@NotNull vs @Column(nullable=false)](https://github.com/dolgodolah/TIL/blob/master/spring/jpa%20%40NotNull%20vs%20%40Column(nullable%20%3D%20false).md)
 - [Thymeleaf 문법](https://github.com/dolgodolah/TIL/blob/master/spring/thymeleaf%20%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95.md)
 - [JPA 복합키 설정](https://github.com/dolgodolah/TIL/blob/master/spring/JPA%20%EB%B3%B5%ED%95%A9%ED%82%A4%20%EC%84%A4%EC%A0%95.md)
+- [Bean Validation을 통한 유효성 검사](https://github.com/dolgodolah/TIL/blob/master/spring/Bean%20Validation%20%EC%9C%A0%ED%9A%A8%EC%84%B1%20%EA%B2%80%EC%82%AC.md)
