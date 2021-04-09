@@ -15,7 +15,7 @@ ajax 통신을 하기 위해서는 jQuery 라이브러리를 이용해야한다.
 
 ## 기본 예제
 - 클라이언트 (javascript)
-```
+```javascript
     $('#btn1').on('click', function(){
         var form = {
                 name: "jamong",
@@ -46,7 +46,7 @@ public String simpleWithObject(Jamong jamong) {
 ```
 - 뷰 (html)
 
-```
+```html
 <body>
     <button id="btn1">버튼</button>
     <div id="result"></div>
