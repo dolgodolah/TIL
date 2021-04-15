@@ -1,6 +1,6 @@
 # Today I Learned
 
-오늘 배운 내용을 기록합니다. 작은 지식이 모이면 분명 큰 지식이 됩니다.
+오늘 배운 내용을 기록합니다. 작은 지식이 모이면 큰 지식이 됩니다.
 
 ## 목표
 
@@ -41,3 +41,6 @@
 - [Thymeleaf 문법](https://github.com/dolgodolah/TIL/blob/master/spring/thymeleaf%20%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95.md)
 - [JPA 복합키 설정](https://github.com/dolgodolah/TIL/blob/master/spring/JPA%20%EB%B3%B5%ED%95%A9%ED%82%A4%20%EC%84%A4%EC%A0%95.md)
 - [Bean Validation을 통한 유효성 검사](https://github.com/dolgodolah/TIL/blob/master/spring/Bean%20Validation%20%EC%9C%A0%ED%9A%A8%EC%84%B1%20%EA%B2%80%EC%82%AC.md)
+- [스프링서버에서 AJAX(비동기) 통신](https://github.com/dolgodolah/TIL/blob/master/spring/Spring%20AJAX%20%ED%86%B5%EC%8B%A0.md)
+- [JpaRepository 사용법](https://github.com/dolgodolah/TIL/blob/master/spring/JpaRepository%20%EC%82%AC%EC%9A%A9%EB%B2%95.md)
+- [JPA Auditing으로 생성일/수정일 자동화](https://github.com/dolgodolah/TIL/blob/master/spring/JPA%20Auditing.md)
