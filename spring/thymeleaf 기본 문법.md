@@ -20,7 +20,16 @@ th:[속성]="서버 전달 받은 값 또는 조건식"
 
 <p th:unless="${user.authType}=='facebook'" th:text="'not '+ ${user.authType}"></p> <!-- else -->
 
-<p th:each="user : ${users}" th:text="${user.name}"></p> <!-- 반복문 -->
+<div th:each="user : ${users}">
+    <p th:text="${user.name}"></p>
+    <!-- th:each 반복 상태를 추척할 수 있는 status 변수, 반복대상명 + "Stat" -->
+    <p th:text="${userStat.index}"></p> <!-- 0부터 시작 -->
+    <p th:text="${userStat.count}"></p> <!-- 1부터 시작 -->
+    <p th:text="${userStat.even}"></p> <!-- 현재 반복이 짝수인지 여부 (boolean) -->
+    <p th:text="${userStat.odd}"></p> <!-- 현재 반복이 홀수인지 여부 -->
+    <p th:text="${userStat.first}"></p> <!-- 현재 반복이 첫번째인지 여부 -->
+    <p th:text="${userStat.last}"></p> <!-- 현재 반복이 마지막인지 여부 -->
+</div> <!-- 반복문 -->
 
 <li th:classappend="${condition} == 1 ? 'active'"><a href="/"></a> <!-- condition이 1이면 "/" 링크를 가진 'active' 클래스 추가 -->
 <li th:classappend="${condition} == 2 ? 'active'"><a href="/about"></a> <!-- 상황에 따라 동적으로 class 추가 -->
@@ -38,3 +47,4 @@ input은 th:value, textareas는 th:text를 사용한다.
 
 ## 참고 링크
 [https://eblo.tistory.com/55](https://eblo.tistory.com/55)
+[https://ifuwanna.tistory.com/200](https://ifuwanna.tistory.com/200)
