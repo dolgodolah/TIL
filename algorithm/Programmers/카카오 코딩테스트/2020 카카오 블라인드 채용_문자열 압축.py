@@ -1,3 +1,44 @@
+# 2021년 4월 23일 두번째 풀이
+
+def solution(s):
+    answer = int(10e9)
+    for size in range(1,len(s)//2+1):
+        text="" # 해당 size로 압축된 후의 문자열
+        cnt=1 # 압축 시 해당 문자의 반복 횟수(압축되는 문자 갯수)
+        
+        idx=0
+        while idx<len(s):
+            # 해당 size 기준으로 i,i+size가 같은지 확인한다.
+            
+            # 압축 가능
+            if s[idx:idx+size]==s[idx+size:idx+size+size]:
+                cnt+=1  # 압축되는 문자 갯수를 누적한다.
+                idx+=size # 다음 인덱스를 size만큼 이동시켜야한다.
+                
+            # 압축 불가능
+            else:
+                # 압축 불가능한 경우는 두 가지가 있다.
+                if cnt>1: # 앞에서 압축이 일어난 경우 aaa -> 3a
+                    text+=str(cnt)+s[idx:idx+size] # 문자 반복 횟수를 붙여준다.
+                    
+                else: # 앞에서 압축이 일어나지 않은 경우 abc -> abc
+                    text+=s[idx:idx+size]
+                    
+                cnt=1 # 문자 반복 횟수를 다시 1로 초기화한다.
+                idx+=size # 다음 인덱스는 항상 +size 이다.
+        # print(text)
+        answer=min(len(text),answer)
+    if answer==int(10e9):
+        answer=1
+    return answer
+
+
+
+
+
+
+
+#2021년 1월 23일 풀이
 #문자열은 제일 앞부터 정해진 길이만큼 잘라야 합니다. 따라서 주어진 문자열을 x / ababcdcd / ababcdcd 로 자르는 것은 불가능 합니다.
 #위 조건을 생각안하고 하다가 머리 깨질뻔했다. 
 #예를 들어 abcdef에서 압축 단위가 2일 때 ab를 검사하면 cd, ef 이렇게 검사하면된다.
