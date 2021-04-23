@@ -20,10 +20,8 @@
 
 ## Algorithm
 
-
-
 - 코딩테스트 준비를 위한 [BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ), [Programmers](https://github.com/dolgodolah/TIL/tree/master/algorithm/Programmers), [SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA) 문제 연습
-- 1월 17일 [HackerRank](https://github.com/dolgodolah/TIL/tree/master/algorithm/HackerRank) 추가, 영어 지문에 익숙해지자
+- 커밋메시지 형식 : +2 그래프이론, +(풀이 횟수) (알고리즘 분류)
 
 ## Git
 - [깃허브 대표언어 변경법](https://github.com/dolgodolah/TIL/blob/master/git/%EA%B9%83%ED%97%88%EB%B8%8C%20%EB%8C%80%ED%91%9C%EC%96%B8%EC%96%B4%20%EB%B3%80%EA%B2%BD.md)
@@ -44,3 +42,4 @@
 - [스프링서버에서 AJAX(비동기) 통신](https://github.com/dolgodolah/TIL/blob/master/spring/Spring%20AJAX%20%ED%86%B5%EC%8B%A0.md)
 - [JpaRepository 사용법](https://github.com/dolgodolah/TIL/blob/master/spring/JpaRepository%20%EC%82%AC%EC%9A%A9%EB%B2%95.md)
 - [JPA Auditing으로 생성일/수정일 자동화](https://github.com/dolgodolah/TIL/blob/master/spring/JPA%20Auditing.md)
+- [JPA 연관관계 매핑(단방향, 양방향)](https://github.com/dolgodolah/TIL/blob/master/spring/JPA%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91.md)
