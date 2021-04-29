@@ -55,11 +55,6 @@ findByAgeGraterThanEqual(int age)
 findByAgeGraterThanEqual(int age)
 ```
  
-- Like : like 검색
-```java
-findByNameLike(String name)
-```
- 
 
 - IsNull : null 인 항목 검색
 ```java
@@ -76,7 +71,19 @@ findByJob(String … jobs)
 ```java
 findByEmailOrderByNameAsc(String email)
 ```
+
+- Like : like 검색
+```java
+findByNameLike(String name)
+```
+
+- Containing : like 검색
+```java
+findByTitleContaining(String keyword);
+```
  
+ findByNameLike("%in%")와 findByNameContaining("in")은 같은 결과를 가진다.
+ (Like는 와일드카드 문자를 포함해야 Containing과 같은 결과를 가진다.)
 
 ## 참고
 [https://jobc.tistory.com/120](https://jobc.tistory.com/120)
