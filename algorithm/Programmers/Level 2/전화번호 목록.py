@@ -20,10 +20,32 @@ def solution(phone_book):
     answer = True
     phone_book.sort()
     for i in range(len(phone_book)-1):
-        if phone_book[i] in phone_book[i+1]:
+        if phone_book[i] in phone_book[i+1][:len(phone_book[i])]: #접두어이므로 len(phone_book[i])까지 탐색한다.
             answer=False
             break
-
     return answer
 
-print(solution(['123','456','789']))
+
+# 해시를 이용한 풀이
+def solution(phone_book):
+    answer = True
+    dic=dict()
+    for phone_number in phone_book:
+        if not phone_number in dic:
+            dic[phone_number]=1
+    
+
+    # phone_number가 "1195524421" 일 때를 보자.
+    # number는 "1", "11", "119" ... 가 될 것이다.
+    # number가 "119"일 때 if number in dic 조건에서 참이 되므로 answer는 False가 된다.
+    # 주의할 점은 {"119":1 , ...}에서 자기 자신을 참으로 하는 경우를 제외해야하므로
+    # number!=phone_number를 추가해준다.
+    for phone_number in phone_book:
+        number=""
+        for i in phone_number:
+            number+=i
+            if number in dic and number!=phone_number:
+                answer=False
+
+
+    return answer
