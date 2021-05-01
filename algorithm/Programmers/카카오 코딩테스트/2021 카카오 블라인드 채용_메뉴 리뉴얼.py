@@ -1,5 +1,41 @@
-# 문자열에 대해 처리하고 해당 문자를 딕셔너리에 넣어 주어진 조건에 맞게 구현했다.
+#2021-04-30 두번째 풀이
+from itertools import combinations
 
+def solution(orders, course):
+    answer = []
+    dic=dict()
+
+    #course마다 만들어질 수 있는 조합을 모두 구한다.
+    for order in orders:
+        order=sorted(list(order))
+        for i in course:
+            for j in combinations(order,i):
+                tmp=''.join(j)
+                if not tmp in dic:
+                    dic[tmp]=1
+                else:
+                    dic[tmp]+=1
+    
+    # course마다 가장 많이 나온 조합을 찾는다.
+    # 가장 많이 나온 조합이 여러개일 수 있으므로 list로 받는다.
+    for i in course:
+        max_v=0
+        tmp_answer=[]
+        for j in dic:
+            if len(j)==i and dic[j]>1: #적어도 두 번 이상은 나온 조합이어야 한다.
+                if max_v<dic[j]:
+                    max_v=dic[j]
+                    tmp_answer=[j]
+                elif max_v==dic[j]:
+                    tmp_answer.append(j)
+        for j in tmp_answer: #해당 course에서 구해진 조합들을 answer에 추가한다.
+            answer.append(j)
+    answer.sort()
+    return answer
+
+
+#2021-01-25 첫번째 풀이
+# 문자열에 대해 처리하고 해당 문자를 딕셔너리에 넣어 주어진 조건에 맞게 구현했다.
 from itertools import combinations
 def solution(orders, course):
     answer = []
