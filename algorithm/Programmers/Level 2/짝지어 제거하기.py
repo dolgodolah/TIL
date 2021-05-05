@@ -1,3 +1,20 @@
+# 21년 5월 5일 두번째 풀이
+def solution(s):
+    answer = 0
+    stack=list()
+    s=list(s)
+    for ss in s:
+        stack.append(ss)
+        while len(stack)>1 and stack[-1]==stack[-2]:
+            stack.pop()
+            stack.pop()
+    # print(stack)
+    if not stack:
+        answer=1
+    return answer
+
+
+# 21년 1월 27일 첫번째 풀이
 def solution(s):
     answer = 0
     stack = []
