@@ -1,3 +1,33 @@
+# 21년 5월 5일 두번째 풀이
+from heapq import heappop, heappush
+def check(scoville,K):
+    for i in range(len(scoville)):
+        if scoville[i]<K:
+            return False
+    return True
+
+def solution(scoville, K):
+    answer = 0
+    queue=[]
+    for value in scoville:
+        heappush(queue,value)
+
+    # 모든 음식의 스코빌 지수가 K이상이 아니고, 음식이 2개 이상일 때까지 계속 섞는다.
+    while not check(queue,K) and len(queue)>1:
+        v1=heappop(queue)
+        v2=heappop(queue)*2
+        heappush(queue,v1+v2)
+        answer+=1 # 섞는 횟수 카운팅
+    
+    if check(queue,K):
+        return answer
+    else:
+        return -1
+
+print(solution([1, 2, 3, 9, 10, 12],7))
+
+
+# 21년 1월 24일 첫번째 풀이
 # scoville의 길이가 최대 1,000,000에다가 k가 최대 1,000,000,000이다.
 # scoville를 매번 정렬하고 최소값을 꺼내면 시간초과가 예상된다.
 # 힙구조를 이용하면 쉽게 구현할 수 있다.
