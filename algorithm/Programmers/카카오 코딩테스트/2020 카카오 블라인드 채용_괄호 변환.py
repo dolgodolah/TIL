@@ -1,3 +1,71 @@
+# 21년 5월 5일 두번째 풀이
+# 올바른 괄호 문자열인지 판단하는 correct_bracket()과
+# 문자열 w를 두 "균형잡힌 괄호 문자열" u, v로 분리하는 split_w()를 따로 만들어
+# change()를 재귀적으로 실행하였다.
+def split_w(w):
+    u=""
+    v=""
+    for i in range(len(w)):
+        u+=w[i]
+        if u.count("(")==u.count(")"):
+            if i+1<len(w):
+                v+=w[i+1::]
+            break
+    return u,v
+
+def correct_bracket(u):
+    stack=[]
+    for i in range(len(u)):
+        if stack:
+            if stack[-1]=="(" and u[i]==")":
+                stack.pop()
+            else:
+                stack.append(u[i])
+        else:
+            stack.append(u[i])
+    
+    if stack:
+        return False
+    else:
+        return True
+
+def change(p):
+    if p=="":
+        return ""
+    u,v=split_w(p)
+    # print(u,v)
+    if correct_bracket(u):
+        v=change(v)
+        u+=v
+        return u
+    else:
+        temp="("
+        v=change(v)
+        temp+=v
+        temp+=")"
+        u=list(u)
+        u.pop(0)
+        u.pop()
+        for i in range(len(u)):
+            if u[i]=="(":
+                u[i]=")"
+            else:
+                u[i]="("
+        temp+=''.join(u)
+        return temp
+def solution(p):
+    answer = ''
+    answer=change(p)
+
+    return answer
+
+# print(solution("(()())()"))
+# print(solution(")("))
+print(solution("()))((()"))
+
+
+
+# 21년 1월 25일 첫번째 풀이
 # 프로그래머스 문제는 좋은게 매번 새로운 걸 배우는 느낌이다.
 # 문자열 p에 대한 처리와 주어진 조건에 맞게 재귀함수를 구현하면 된다. 
 
