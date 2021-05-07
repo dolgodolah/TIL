@@ -1,3 +1,35 @@
+# 21년 5월 7일 두번째 풀이
+def solution(gems):
+    answer = []
+    gem_type=set()
+    for gem in gems:
+        gem_type.add(gem)
+    left=0
+    right=0
+    basket={gems[left]:1}
+    while left<=right and right<len(gems):
+        if len(basket)!=len(gem_type):
+            right+=1
+            if right>=len(gems):
+                break
+            if gems[right] in basket:
+                basket[gems[right]]+=1
+            else:
+                basket[gems[right]]=1
+        else:
+            answer.append([left+1,right+1])
+            if gems[left] in basket:
+                basket[gems[left]]-=1
+            
+            if basket[gems[left]]==0:
+                del basket[gems[left]]
+            left+=1
+
+    answer.sort(key=lambda x:x[1]-x[0])
+    return answer[0]
+
+
+#21년 2월 13일 첫번째 풀이
 # left=0, right=0에서 right를 1씩 늘려가 모든 보석을 다 샀는지 len(dic)==len(gem_type):를 통해 확인한다. 
 # 모든 보석을 구매한 상태가 되면 left를 1씩 늘려가(길이를 줄여나감) 그래도 모든 보석을 다 산 상태인지 확인한다.
 # 모든 보석을 다 산 상태이면 계속해서 left를 1씩 늘여 길이를 줄여보고
