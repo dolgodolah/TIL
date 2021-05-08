@@ -1,3 +1,37 @@
+# 21년 5월 8일 두번째 풀이
+from itertools import permutations
+from collections import deque
+def solution(expression):
+    answer = 0
+    new_expression=list()
+    num=""
+    for i in range(len(expression)):
+        if expression[i] in ['0','1','2','3','4','5','6','7','8','9']:
+            num+=expression[i]
+        else:
+            new_expression.append(num)
+            new_expression.append(expression[i])
+            num=""
+    new_expression.append(num)
+    # print(new_expression)
+
+    for operations in permutations(['+','-','*'],3):
+        copy_expression=new_expression.copy()
+        
+        for operation in operations:
+            while operation in copy_expression:
+                for i in range(len(copy_expression)):
+                    if copy_expression[i]==operation:
+                        tmp=""
+                        for _ in range(3):tmp+=copy_expression.pop(i-1)
+                        copy_expression.insert(i-1,str(eval(tmp)))
+                        break
+        answer=max(answer,abs(int(copy_expression[0])))
+
+    return answer
+
+
+# 21년 1월 26일 첫번째 풀이
 from itertools import permutations
 def solution(expression):
     answer = 0
