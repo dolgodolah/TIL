@@ -1,3 +1,21 @@
+# 21년 5월 7일 두번째 풀이
+from collections import deque
+def solution(people, limit):
+    answer = 0
+    people.sort()
+    people=deque(people)
+    left=0
+    right=len(people)-1
+    while left<=right:
+        if people[left]+people[right]<=limit:
+            left+=1
+        right-=1
+        answer+=1
+        
+        
+    return answer
+
+# 21년 1월 24일 첫번째 풀이
 # 문제 꼼꼼히 읽자!!!! 구명보트는 최대 2명밖에 못탄다..
 # 해결 아이디어는 사람들을 몸무게 순으로 정렬을 하고
 # 몸무게가 가장 작은 사람과 큰 사람을 태울거다.
