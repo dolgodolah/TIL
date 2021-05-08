@@ -1,3 +1,26 @@
+# 21년 5월 7일 두번째 풀이
+def solution(brown, yellow):
+    answer = []
+
+    # 노란 격자의 행을 1부터 증가시켜보자.
+    for i in range(1,yellow+1):
+        if not yellow%i==0: #  격자의 행과 열의 곱이 노란 격자 갯수가 될 수 없을 때
+            continue
+        
+        
+        row=i+2 # 노란 격자의 행 갯수+2가 카펫의 행 갯수가 된다.
+        column=yellow//i+2 
+
+        if row*2+(column-2)*2==brown:
+            answer=[column,row]
+            break
+
+    return answer
+
+print(solution(24,24))
+
+
+# 21년 1월 25일 첫번째 풀이
 # yellow의 개수를 이용해 yellow 가로가 1일때부터 오름차순으로 완전탐색했다.
 # 
 
