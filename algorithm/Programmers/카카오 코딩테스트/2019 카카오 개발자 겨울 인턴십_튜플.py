@@ -1,3 +1,24 @@
+# 21년 5월 6일 두번째 풀이
+def solution(s):
+    answer = []
+    s=s.lstrip("{")
+    s=s.rstrip("}")
+    s=s.split("},{")
+    for i in range(len(s)):
+        s[i]=s[i].split(",")
+    
+    s.sort(key=lambda x:len(x))
+    
+    dic=dict()
+    for i in range(len(s)):
+        for j in s[i]:
+            if not j in dic:
+                dic[j]=1
+                answer.append(int(j))
+    return answer
+
+
+#21년 1월 25일 첫번째 풀이
 # 카카오 코딩테스트는 문자열 문제가 많이 출제되는 것 같다.
 
 # 문제 해결 아이디어는 원소가 하나인것부터 answer에 추가하면 된다.
