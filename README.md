@@ -1,39 +1,43 @@
 # Today I Learned
 
-오늘 배운 내용을 기록합니다. 작은 지식이 모이면 큰 지식이 됩니다.
+### 목표
 
-## 목표
+`1 Day, 1 Commit` :fire:
 
-1 Day 1 Commit :fire:
+`오늘 배운 내용을 기록합니다. 작은 지식이 모이면 큰 지식이 됩니다.`
+
+
 
 지난 목표
 - <del> 코딩테스트 준비 - 100문제(1월)
 - <del> 코딩테스트 준비 - 200문제(2월)
-- <del> 코딩테스트 준비 - 300문제,
-
-4월 목표
-- 토이프로젝트(TodayMusic, StudyClub...) 개발
-- 알고리즘 복습
+- <del> 코딩테스트 준비 - 300문제(3월)
+- <del> 토이프로젝트 'My Playlists' 개발 (4월)
 
 5월 목표
-- 카카오 인턴십 코딩테스트 
+- 토이프로젝트 'My-Playlists' AWS 배포
+- 알고리즘 복습
 
-## Algorithm
+# Algorithm
 
 - 코딩테스트 준비를 위한 [BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ), [Programmers](https://github.com/dolgodolah/TIL/tree/master/algorithm/Programmers), [SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA) 문제 연습
-- 커밋메시지 형식 : +2 그래프이론, +(풀이 횟수) (알고리즘 분류)
+- 커밋메시지 형식 : `+2 그래프이론`, `+(풀이 횟수) (알고리즘 분류)`
 
-## Git
+# Git
 - [깃허브 대표언어 변경법](https://github.com/dolgodolah/TIL/blob/master/git/%EA%B9%83%ED%97%88%EB%B8%8C%20%EB%8C%80%ED%91%9C%EC%96%B8%EC%96%B4%20%EB%B3%80%EA%B2%BD.md)
 
-## Javascript
+# Java
+기초의 기초부터 공부합니다.
+- [문자열](https://github.com/dolgodolah/TIL/blob/master/java/%EB%AC%B8%EC%9E%90%EC%97%B4%20%EA%B0%9D%EC%B2%B4%EC%9D%98%20%EC%83%9D%EC%84%B1%EA%B3%BC%20%EC%82%AC%EC%9A%A9.md)
+
+# Javascript
 - [To Do List (vanilla JS)](https://github.com/dolgodolah/TIL/tree/master/javascript/Making%20a%20To%20Do%20List)
 
-## REST
+# REST
 - [REST란?](https://github.com/dolgodolah/TIL/blob/master/REST/REST%EB%9E%80.md)
 
 
-## Spring
+# Spring
 - [Gradle vs Maven](https://github.com/dolgodolah/TIL/blob/master/spring/Gradle%20vs%20Maven.md)
 - [@NotNull vs @Column(nullable=false)](https://github.com/dolgodolah/TIL/blob/master/spring/jpa%20%40NotNull%20vs%20%40Column(nullable%20%3D%20false).md)
 - [Thymeleaf 문법](https://github.com/dolgodolah/TIL/blob/master/spring/thymeleaf%20%EA%B8%B0%EB%B3%B8%20%EB%AC%B8%EB%B2%95.md)
