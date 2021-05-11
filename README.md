@@ -29,6 +29,8 @@
 # Java
 기초의 기초부터 공부합니다.
 - [문자열](https://github.com/dolgodolah/TIL/blob/master/java/%EB%AC%B8%EC%9E%90%EC%97%B4%20%EA%B0%9D%EC%B2%B4%EC%9D%98%20%EC%83%9D%EC%84%B1%EA%B3%BC%20%EC%82%AC%EC%9A%A9.md)
+- [for-each](https://github.com/dolgodolah/TIL/blob/master/java/for-each.md)
+- [객체 생성 방법 (디자인 패턴)](https://github.com/dolgodolah/TIL/blob/master/java/%EA%B0%9D%EC%B2%B4%20%EC%83%9D%EC%84%B1%20%EB%B0%A9%EB%B2%95%20(%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%8C%A8%ED%84%B4).md)
 
 # Javascript
 - [To Do List (vanilla JS)](https://github.com/dolgodolah/TIL/tree/master/javascript/Making%20a%20To%20Do%20List)
