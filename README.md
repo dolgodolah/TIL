@@ -15,7 +15,8 @@
 - <del> 토이프로젝트 'My Playlists' 개발 (4월)
 
 5월 목표
-- 토이프로젝트 'My-Playlists' AWS 배포
+- <del> 카카오 여름 인턴십 코딩테스트
+- <del> 토이프로젝트 'My-Playlists' AWS 배포
 - 알고리즘 복습
 
 # Spring
@@ -39,19 +40,22 @@
 
 
 # Algorithm
-
 - 코딩테스트 준비를 위한 [BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ), [Programmers](https://github.com/dolgodolah/TIL/tree/master/algorithm/Programmers), [SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA) 문제 연습
 - 커밋메시지 형식 : `+2 그래프이론`, `+(풀이 횟수) (알고리즘 분류)`
-
-# Git
-- [깃허브 대표언어 변경법](https://github.com/dolgodolah/TIL/blob/master/git/%EA%B9%83%ED%97%88%EB%B8%8C%20%EB%8C%80%ED%91%9C%EC%96%B8%EC%96%B4%20%EB%B3%80%EA%B2%BD.md)
-
 
 
 # Javascript
 - [To Do List (vanilla JS)](https://github.com/dolgodolah/TIL/tree/master/javascript/Making%20a%20To%20Do%20List)
 
+
+# Git
+- [깃허브 대표언어 변경법](https://github.com/dolgodolah/TIL/blob/master/git/%EA%B9%83%ED%97%88%EB%B8%8C%20%EB%8C%80%ED%91%9C%EC%96%B8%EC%96%B4%20%EB%B3%80%EA%B2%BD.md)
+
+
 # REST
 - [REST란?](https://github.com/dolgodolah/TIL/blob/master/REST/REST%EB%9E%80.md)
 
+
+# Server
+- [터미널 세션 종료 시 프로세스 유지방법](https://github.com/dolgodolah/TIL/blob/master/server/%ED%84%B0%EB%AF%B8%EB%84%90%20%EC%84%B8%EC%85%98%20%EC%A2%85%EB%A3%8C%20%EC%8B%9C%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EC%9C%A0%EC%A7%80%EB%B0%A9%EB%B2%95.md)
 
