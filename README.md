@@ -59,3 +59,7 @@
 # Server
 - [터미널 세션 종료 시 프로세스 유지방법](https://github.com/dolgodolah/TIL/blob/master/server/%ED%84%B0%EB%AF%B8%EB%84%90%20%EC%84%B8%EC%85%98%20%EC%A2%85%EB%A3%8C%20%EC%8B%9C%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EC%9C%A0%EC%A7%80%EB%B0%A9%EB%B2%95.md)
 
+- [AWS EC2 보안그룹 설정](https://github.com/dolgodolah/TIL/blob/master/server/AWS%20EC2%20%EB%B3%B4%EC%95%88%EA%B7%B8%EB%A3%B9%20%EC%84%A4%EC%A0%95.md)
+
+- [리눅스 서버 타임존 변경](https://github.com/dolgodolah/TIL/blob/master/server/%EC%84%9C%EB%B2%84%20%ED%83%80%EC%9E%84%EC%A1%B4%20%EB%B3%80%EA%B2%BD.md)
+
