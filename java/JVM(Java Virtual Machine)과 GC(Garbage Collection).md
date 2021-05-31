@@ -4,13 +4,34 @@ JVM과 GC에 대해 공부하면서 배운 내용을 정리한 글입니다.
 
 ## JVM이란?
 
-JVM(Java Virtual Machine)은 자바 애플리케이션을 클래스 로더를 통해 읽어 들여 자바 API와 함께 실행되는 자바 가상 머신입니다.
-
-이는 Java가 `OS에 구애받지 않고 재사용`을 가능하게 해줍니다. 또한 `메모리 관리`, `Garbage Collector`을 수행합니다.
+JVM(Java Virtual Machine)은 Java가 `OS에 구애받지 않고 재사용`을 가능하게 해주며 `메모리 관리`, `Garbage Collector`을 수행하는 자바 가상 머신입니다.
 
 한정된 메모리를 효율적으로 사용하여 최고의 성능을 내기 위해 JVM에 대해 공부하여야 합니다.
 
+JVM의 구조는 크게 `Class Loader`, `Execution Engine`, `Garbage Collector`, `Runtime Data Area`로 나뉩니다.
+
 가장 일반적인 상호작용은 힙과 스택의 메모리 사용을 확인하는 것입니다.
+
+이 글에서 다룰 Garbage Collector는 밑에서 자세히 다루도록 하고 나머지 구조에 대해 간단히 알아보겠습니다.
+
+## Class Loader
+
+a.java 파일이 생성되면 자바컴파일러(javac)가 컴파일하여 a.class같은 클래스 파일(바이트코드)로 변환해줍니다.
+
+이러한 class파일들을 모아서 JVM이 OS로부터 할당받은 메모리 영역(Runtime Data Area)에 적재하는 역할을 합니다.
+
+## Execution Engine
+
+Execution Engine은 Class Loader에 의해 적재된 클래스들을 기계어로 번역해 명령어 단위로 실행하는 역할을 합니다. 
+
+## Runtime Data Area
+
+JVM의 메모리 영역으로 자바 애플리케이션 실행 시 사용되는 데이터들을 적재하는 공간입니다.
+
+Runtime Data Area는 Method Area, Heap Area, Stack Area, PC register, Native Method Area로 구분됩니다.
+
+
+
 
 ## GC(Garbage Collection)
 자바 이전에는 개발자가 모든 프로그램 메모리를 관리했지만 자바에서는 JVM이 프로그램 메모리를 관리해줍니다.
@@ -87,7 +108,7 @@ Survival에서의 GC가 발생할 때는 Reachable 객체에 대해 Age 값을 �
 
 
 
-즉, Survival 0와 Survival 1 중 하나는 항상 비어있는 상태가 유지되어야 합니다.
+즉, `Survival 0와 Survival 1 중 하나는 항상 비어있는 상태가 유지`되어야 합니다.
 
 ***Major GC***
 
@@ -96,6 +117,8 @@ Minor GC로 인해 Old Generation 영역도 가득 차게 되면 GC가 발생하
 
 
 ## 출처
+[https://velog.io/@hono2030/JVM%EC%9D%98-%EA%B5%AC%EC%A1%B0](https://velog.io/@hono2030/JVM%EC%9D%98-%EA%B5%AC%EC%A1%B0)
+
 [https://www.itworld.co.kr/news/110837](https://www.itworld.co.kr/news/110837)
 
 [https://asfirstalways.tistory.com/158](https://asfirstalways.tistory.com/158)
