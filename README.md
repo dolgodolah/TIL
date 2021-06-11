@@ -13,11 +13,13 @@
 - <del> 코딩테스트 준비 - 200문제(2월)
 - <del> 코딩테스트 준비 - 300문제(3월)
 - <del> 토이프로젝트 'My Playlists' 개발 (4월)
+- <del> 카카오 여름 인턴십 코딩테스트 (5월)
+- <del> 토이프로젝트 'My-Playlists' AWS 배포 (5월)
+- <del> 알고리즘 복습 (5월)
 
-5월 목표
-- <del> 카카오 여름 인턴십 코딩테스트
-- <del> 토이프로젝트 'My-Playlists' AWS 배포
-- 알고리즘 복습
+6월 목표
+- JAVA 공부 (effective java)
+- 커머스 프로젝트 구현
 
 # Spring
 - [Spring 개념 정리](https://github.com/dolgodolah/TIL/blob/master/spring/Spring%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC.md)
@@ -32,6 +34,8 @@
 - [JPA 복합키 설정](https://github.com/dolgodolah/TIL/blob/master/spring/JPA%20%EB%B3%B5%ED%95%A9%ED%82%A4%20%EC%84%A4%EC%A0%95.md)
 - [Bean Validation을 통한 유효성 검사](https://github.com/dolgodolah/TIL/blob/master/spring/Bean%20Validation%20%EC%9C%A0%ED%9A%A8%EC%84%B1%20%EA%B2%80%EC%82%AC.md)
 - [기본 예제 : 게시판 만들기](https://github.com/dolgodolah/TIL/tree/master/spring/basic_example)
+- [Filter, Interceptor, AOP의 기능들과 차이점](https://github.com/dolgodolah/TIL/commit/8f8083f7cada8cfa14fd3b8290b8656267d77fbe#diff-622a494d3ea8c7ba2fed4f37909f14d9b50ab412322de39be62c8d6c2418bfca)
+- [Spring MVC, DispatcherServlet](https://github.com/dolgodolah/TIL/commit/4bc6e7b60e85bf864e00319f89ccef59d07a7135#diff-622a494d3ea8c7ba2fed4f37909f14d9b50ab412322de39be62c8d6c2418bfca)
 
 
 # Java
@@ -56,6 +60,7 @@
 
 # DB
 - [MySQL에서 Emoji 데이터 처리하기](https://github.com/dolgodolah/TIL/blob/master/mysql/MySQL%EC%97%90%EC%84%9C%20%EC%9D%B4%EB%AA%A8%EC%A7%80(utf8mb4)%20%EC%B2%98%EB%A6%AC.md)
+- [ORM 개념 정리](https://github.com/dolgodolah/TIL/blob/master/DB/ORM%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC.md)
 
 # Algorithm
 - 코딩테스트 준비를 위한 [BOJ](https://github.com/dolgodolah/TIL/tree/master/algorithm/BOJ), [Programmers](https://github.com/dolgodolah/TIL/tree/master/algorithm/Programmers), [SWEA](https://github.com/dolgodolah/TIL/tree/master/algorithm/SWEA) 문제 연습
@@ -68,6 +73,6 @@
 
 # Git
 - [깃허브 대표언어 변경법](https://github.com/dolgodolah/TIL/blob/master/git/%EA%B9%83%ED%97%88%EB%B8%8C%20%EB%8C%80%ED%91%9C%EC%96%B8%EC%96%B4%20%EB%B3%80%EA%B2%BD.md)
-
+- [git add, git commit, git push 취소하기](https://github.com/dolgodolah/TIL/blob/master/git/git%20add%2C%20git%20commit%2C%20git%20push%20%EC%B7%A8%EC%86%8C%ED%95%98%EA%B8%B0.md)
 
 
