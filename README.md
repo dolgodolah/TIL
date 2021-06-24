@@ -17,9 +17,10 @@
 - <del> 토이프로젝트 'My-Playlists' AWS 배포 (5월)
 - <del> 알고리즘 복습 (5월)
 
-6월 목표
-- JAVA 공부 (effective java)
+현재 목표
 - 커머스 프로젝트 구현
+- 로그인 관련 다양한 로직 구현
+- 스프링 인 액션 챕터4, 챕터5, 챕터7
 
 # Spring
 - [Spring 개념 정리](https://github.com/dolgodolah/TIL/blob/master/spring/Spring%20%EA%B0%9C%EB%85%90%20%EC%A0%95%EB%A6%AC.md)
