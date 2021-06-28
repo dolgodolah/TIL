@@ -2,8 +2,9 @@
 
 반복해서 사용해봐야 손에 익을텐데, 시간 남을 때 조금씩 하다보니 매번 타임리프 문법을 구글링해서 찾아본다. 익숙해지기 전까지는 자주 찾아볼것 같아서 기록해둔다.
 
-## 표현식
+[모든 문법](https://noritersand.github.io/java/java-%ED%83%80%EC%9E%84%EB%A6%AC%ED%94%84-thymeleaf-%EA%B8%B0%EB%B3%B8/)
 
+## 표현식
 
 ```
 th:[속성]="서버 전달 받은 값 또는 조건식"
@@ -11,6 +12,7 @@ th:[속성]="서버 전달 받은 값 또는 조건식"
 
 ## 자주 사용하는 문법
 
+기본문법
 ```html
 <span th:text="${user.name}"></span> <!-- 텍스트 내용 -->
 
@@ -35,15 +37,17 @@ th:[속성]="서버 전달 받은 값 또는 조건식"
 <li th:classappend="${condition} == 2 ? 'active'"><a href="/about"></a> <!-- 상황에 따라 동적으로 class 추가 -->
 ```
 
-## 그 외 정보
+HttpServlet의 Attribute 값 가져오기
 
-
-input은 th:value, textareas는 th:text를 사용한다.
+```java
+HttpServletRequest request;
+request.setAttribute("errorMessage", "비밀번호 일치하지 않음");
+```
 
 ```html
-<input type="text" name="writer" th:value="${post.writer}">
-<textarea type="text" name="content" th:text="${post.content}"></textarea>
+<span th:text="${#request.getAttribute('errorMessage')}"></span> <!-- HttpServletRequest object의 'errorMessage'를 반환 -->
 ```
+
 
 ## 참고 링크
 [https://eblo.tistory.com/55](https://eblo.tistory.com/55)
