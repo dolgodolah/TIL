@@ -48,6 +48,27 @@ request.setAttribute("errorMessage", "비밀번호 일치하지 않음");
 <span th:text="${#request.getAttribute('errorMessage')}"></span> <!-- HttpServletRequest object의 'errorMessage'를 반환 -->
 ```
 
+th:each를 통한 체크박스 생성
+```java
+@ModelAttribute("regions")
+public Map<String, String> regions() {
+    Map<String, String> regions = new LinkedHashMap<>();
+    regions.put("SEOUL", "서울");
+    regions.put("BUSAN", "부산");
+    regions.put("JEJU", "제주");
+    return regions;
+}
+
+```
+
+```html
+<div th:each="region : ${regions}" class="form-check form-check-inline">
+    <input type="checkbox" th:field="*{regions}" th:value="${region.key}"
+        class="form-check-input">
+    <label th:for="${#ids.prev('regions')}" th:text="${region.value}" class="form-check-label">region</label>
+</div>
+```
+
 
 ## 참고 링크
 [https://eblo.tistory.com/55](https://eblo.tistory.com/55)
