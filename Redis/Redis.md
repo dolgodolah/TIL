@@ -1,4 +1,4 @@
-# Redis
+# 개요
 
 Redis(REmoteDIctionaryServer)는 NoSQL 중 `Key`, `Value` 형식의 데이터베이스로
 
@@ -8,9 +8,11 @@ NoSQL의 특징과 종류에 대해 간단히 알아보고,
 
 인메모리 방식 스토어들의 특징과 Redis만의 특징(Redis를 사용하는 이유), 기본 개념에 대해 알아보겠습니다.
 
-## 1\. NoSQL
+<br>
 
-### 1.1 NoSQL이란?
+# 1\. NoSQL
+
+## 1.1 NoSQL이란?
 
 RDBMS를 보통 관계형 데이터베이스라고 부른다면 NoSQL은 비관계형 데이터베이스로 부를 수 있습니다.
 
@@ -24,7 +26,7 @@ NoSQL은 Read/Write에 매우 최적화된 데이터베이스입니다.
 
 주로 아주 많은 양의 데이터(빅데이터)를 처리할 때 효율적이고, 분산처리, 빠른 Read/Write 작업이 필요할 때 사용합니다.
 
-### 1.2 NoSQL 종류
+## 1.2 NoSQL 종류
 
 `Document Database` : MongoDB, CouchDB ..
 
@@ -34,7 +36,10 @@ NoSQL은 Read/Write에 매우 최적화된 데이터베이스입니다.
 
 `Graph Database` : Neo4j
 
-## 2\. In Memory Database
+<br>
+<br>
+
+# 2\. In Memory Database
 
 In Memory Database란 데이터를 메모리에 저장하는 데이터베이스를 말합니다.
 
@@ -46,13 +51,16 @@ In Memory Database란 데이터를 메모리에 저장하는 데이터베이스�
 
 대표적인 인메모리 데이터베이스는 `Redis`, `Memcached` 등이 있습니다.
 
-## 3\. Redis만의 특징
+<br>
+<br>
 
-### 3.1 다양한 데이터 구조
+# 3\. Redis만의 특징
+
+## 3.1 다양한 데이터 구조
 
 Redis에서는 다양한 데이터 구조를 지원합니다. 덕분에 개발자는 비즈니스로직에 집중할 수 있는 환경을 제공받습니다.
 
-#### 3.1.1 String
+### String
 
 가장 일반적인 형태로 `key`,`value`의 형태의 데이터를 저장합니다.
 
@@ -60,7 +68,7 @@ Redis에서는 다양한 데이터 구조를 지원합니다. 덕분에 개발�
 -   `get <key>` : key에 해당하는 value를 조회합니다.
 -   `del <key> <key> ...` : 해당 key들을 삭제합니다.
 
-#### 3.1.2 Set
+### Set
 
 여러 개의 값(member)들을 하나의 `value`에 넣을 수 있습니다. 집합을 생각하면 됩니다.
 
@@ -68,11 +76,11 @@ Redis에서는 다양한 데이터 구조를 지원합니다. 덕분에 개발�
 -   `smembers <key>` : key에 해당하는 member들을 조회합니다.
 -   `srem <key> <member> <member> ...` : key에 있는 member들을 삭제합니다. 존재하지 않는 member를 입력하면 무시됩니다.
 
-#### 3.1.3 Sorted Set
+### Sorted Set
 
 Set에 score(가중치) 필드가 추가된 데이터 형태로 유저 랭킹 같은 서비스를 구현하는데 사용할 수 있습니다.
 
-#### 3.1.4 Hash
+### Hash
 
 value내에 `field`, `value`의 형태로 값들을 저장합니다. value에 또 key, value를 저장한다고 생각하면 됩니다.
 
@@ -84,7 +92,7 @@ value내에 `field`, `value`의 형태로 값들을 저장합니다. value에 �
 -   `hvals <key>` : key에 해당하는 Hash 데이터가 가지고 있는 모든 value를 조회합니다.
 -   `hgetall <key>` : key에 해당하는 Hash 데이터가 가지고 있는 모든 field, value를 조회합니다.
 
-### 3.2 Persistence Data Storage
+## 3.2 Persistence Data Storage
 
 Redis는 기본적으로 인메모리 방식의 데이터베이스이지만 디스크에도 데이터를 저장할 수 있습니다.
 
@@ -99,22 +107,28 @@ Redis는 기본적으로 인메모리 방식의 데이터베이스이지만 디�
     -   단점 : 데이터 유실이 발생할 수 있습니다.
 -   결론
     -   AOF 방식과 RDB 방식을 적절히 혼용해서 사용해야 합니다.
-    -   특정 시점마다 RDB 방식을 통해 snapshot을 저장하고, 그 사이(현 snapshot과 다음 snapshot까지)에 발생한 명령어들에 대해서 AOF방식을 수행합니다.
-    -   서버가 재시작될 때 (데이터 복구가 이뤄질 때) snapshot을 복구하고, 나머지 데이터들에 대해서는 AOF 방식으로 소량의 명령어들을 순차적으로 실행시켜 복구합니다.
+    -   특정 시점마다 RDB 방식을 통해 snapshot을 저장하고,  
+        그 사이(현 snapshot과 다음 snapshot까지)에 발생한 명령어들에 대해서 AOF방식을 수행합니다.
+    -   서버가 재시작될 때 (데이터 복구가 이뤄질 때) snapshot을 복구하고,  
+        나머지 데이터들에 대해서는 AOF 방식으로 소량의 명령어들을 순차적으로 실행시켜 복구합니다.
 
-### 3.3 Single Thread
+## 3.3 Single Thread
 
 Redis는 싱글 쓰레드이기 때문에 한 번에 하나의 명령어에 대해서만 실행할 수 있습니다.
 
 그래서 `O(N)`의 시간복잡도를 가지는 `keys *`, `flushall` 등과 같은 명령에 대해서는 주의해야 합니다.
 
-## 4\. maxmemory와 maxmemory-policy 설정
+<br>
+<br>
 
-`redis.conf`를 통해 메모리 최대치(maxmemory)와 최대치에 도달했을 때 메모리에 있는 데이터들을 어떻게 처리할 것인지(maxmemory-policy)에 대해 설정을 할 수 있습니다.
+# 4\. maxmemory와 maxmemory-policy 설정
+
+`redis.conf`를 통해 메모리 최대치(maxmemory)와 최대치에 도달했을 때 메모리에 있는 데이터들을  
+어떻게 처리할 것인지(maxmemory-policy)에 대해 설정을 할 수 있습니다.
 
 redis-cli에서 `config set`을 통해서도 설정할 수 있으나 서버가 재시작되면 `redis.conf` 파일에 있는 설정값들로 유지됩니다.
 
-### 4.1 maxmemory
+## maxmemory
 
 32비트와 64비트 환경에서 maxmemory의 초기값이 다릅니다.
 
@@ -126,7 +140,7 @@ redis-cli에서 `config set`을 통해서도 설정할 수 있으나 서버가 �
 
 또한 더 많은 메모리를 쓰면, 메모리 문제로 장애가 발생할 수 있기 때문에 maxmemory를 설정해줘야합니다.
 
-### 4.2 maxmemory-policy
+## maxmemory-policy
 
 메모리 최대치를 정해뒀으면 최대치에 도달했을 때 메모리에 있는 데이터들을 어떻게 처리할지에 대해서도 명시를 해야합니다.
 
@@ -141,7 +155,10 @@ redis-cli에서 `config set`을 통해서도 설정할 수 있으나 서버가 �
 
 `EXPIRE SET`은 유효시간이 설정된 데이터들의 집합을 말합니다.
 
-## 5\. 다른 인메모리 스토어보다 Redis를 사용해야하는 경우
+<br>
+<br>
+
+# 5\. 다른 인메모리 스토어보다 Redis를 사용해야하는 경우
 
 인메모리 스토어는 데이터 접근이 빠르다는 특징때문에 캐시 적용에 많이 사용되고 있습니다.
 
