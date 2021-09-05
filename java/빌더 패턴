@@ -1,0 +1,191 @@
+# Overview
+
+이펙티브 자바 **아이템2. 생성자에 매개변수가 많다면 빌더를 고려하라 **를 보고 공부한 내용을 정리했다.
+
+생성자와 정적 팩토리를 통해 객체를 생성할 때는 주로 점층적 생성 패턴과, 자바빈 패턴을 사용하게 되는데
+
+이는 매개변수가 많은 객체 생성을 할 때 적절히 대응하기 어렵다는 단점이 있다.
+
+이럴 때는 빌더 패턴을 통한 객체 생성을 고려해야 한다.
+
+결론적으로 이 글에서 빌터 패턴과 점층적 생성 패턴, 자바빈 패턴을 비교해보도록 한다.
+
+# 1. 점층적 생성 패턴
+
+점층적 생성 패턴은 필수 매개변수만 받는 생성자, 필수 매개변수와 선택 매개변수 1개를 받는 생성자,
+
+필수 매개변수와 선택 매개변수 2개를 받는 생성자, ... 형태로 매개변수를 늘려가며 선택 매개변수를 다 받는 방식이다.
+
+```java
+public class NutritionFacts {
+    private final int servingSize; // 필수
+    private final int servings; // 필수
+    private final int calories;
+    private final int fat;
+    private final int sodium;
+    private final int carbohydrate;
+    
+    public NutritionFacts(int servingSize, int servings) {
+        this(servingSize, servings, 0);
+    }
+    
+    public NutritionFacts(int servingSize, int servings, int calories) {
+        this(servingSize, servings, calories, 0);
+    }
+
+    public NutritionFacts(int servingSize, int servings, int calories, int fat) {
+        this(servingSize, servings, calories, fat, 0);
+    }
+
+    public NutritionFacts(int servingSize, int servings, int calories, int fat, int sodium) {
+        this(servingSize, servings, calories, fat, sodium, 0);
+    }
+
+    public NutritionFacts(int servingSize, int servings, int calories, int fat, int sodium, int carbohydrate) {
+        this.servingSize = servingSize;
+        this.servings = servings;
+        this.calories = calories;
+        this.fat = fat;
+        this.sodium = sodium;
+        this.carbohydrate = carbohydrate;
+    }
+}
+```
+
+NutritionFacts 객체를 생성하려면 원하는 매개변수를 포함한 가장 짧은 생성자를 골라 호출하면 된다.
+
+`NutritionFacts cocaCola = new NutritionFacts(240, 8, 100, 0, 35, 27)`
+
+위 코드처럼 설정하길 원치 않는 매개변수도 0으로 지정해줘야 하는 경우가 생기기도 한다. (fat은 0이지만 sodium, carbohydrate 값 설정이 필요한 경우)
+
+매개변수가 많아질 수록 코드를 읽을 때 각 매개변수의 의미가 헷갈리고, 순서가 바뀌거나 엉뚱한 값을 건네주어 휴먼에러가 발생할 가능성이 높아진다.
+
+즉, 점층적 생성자 패턴은 매개변수가 많아질 수록(확장할 수록) 가독성이 좋지 않다는 단점이 있다.
+
+# 2.자바빈즈 패턴
+
+자바빈즈 패턴은 매개변수가 없는 생성자로 객체를 만든 후 setter 메소드를 통해 원하는 매개변수의 값을 설정하는 방식이다.
+
+```java
+public class NutritionFacts {
+    // 기본값이 있다면 기본값으로 초기화한다.
+    private int servingSize = -1; // 필수
+    private int servings = -1; // 필수
+    private int calories = 0;
+    private int fat = 0;
+    private int sodium = 0;
+    private int carbohydrate = 0;
+    
+    public NutritionFacts() { }
+    
+    public void setServingSize(int val) { servingSize = val; }
+    public void setServings(int val) { servings = val; }
+    public void setCalories(int val) { calories = val; }
+    public void setFat(int val) { fat = val; }
+    public void setSodium(int val) { sodium = val; }
+    public void setCarbohydrate(int val) {carbohydrate = val; }
+}
+```
+```java
+NutritionFacts cocaCola = new NutritionFacts();
+cocaCola.setServingSize(240);
+cocaCola.setServings(8);
+cocaCola.setCalories(100);
+cocaCola.setSodium(35);
+cocaCola.setCarbohydrate(27);
+```
+
+설정이 필요없는 fat의 경우에도 설정을 해야했던 점층적 생성자 패턴과 달리
+
+설정이 필요한 매개변수에 대해서만 setter 메소드를 통해 값을 설정한걸 볼 수 있다.
+
+하지만 자바빈즈는 심각한 단점이 있다.
+
+완성된 객체 하나를 만들려면 메소드를 여러 개 호출해야 하고, 완전히 생성되기 전까지는 일관성이 무너질 수 있다.
+
+즉, 일관성이 무너지는 문제 때문에 자바빈즈 패턴은 불변(immutable)한 객체를 만들 수 없어 스레드 환경에서 안전성이 없다.
+
+# 3. 빌더 패턴
+
+점층적 생성자 패턴의 안전성과 자바빈즈 패턴의 가독성 장점을 합친 빌더 패턴이다.
+
+필수 매개변수만으로 생성자를 호출해 빌더 객체를 얻고, 빌더 객체가 제공하는 선택 매개변수 설정 메소드를 통해 값을 설정한다.
+
+```java
+public class NutritionFacts {
+    private final int servingSize;
+    private final int servings;
+    private final int calories;
+    private final int fat;
+    private final int sodium;
+    private final int carbohydrate;
+    
+    public static class Builder {
+        // 필수
+        private final int servingSize;
+        private final int servings;
+        
+        // 선택
+        private int calories = 0;
+        private int fat = 0;
+        private int sodium = 0;
+        private int carbohydrate = 0;
+        
+        public Builder(int servingSize, int servings) {
+            this.servingSize = servingSize;
+            this.servings = servings;
+        }
+        
+        public Builder calories(int val) {
+            calories = val;
+            return this;
+        }
+        
+        public Builder fat(int val) {
+            fat = val;
+            return this;
+        }
+        
+        public Builder sodium(int val) {
+            sodium = val;
+            return this;
+        }
+        
+        public Builder carbohydrate(int val) {
+            carbohydrate = val;
+            return this;
+        }
+        
+        public NutritionFacts build() {
+            return new NutritionFacts(this);
+        }
+    }
+    
+    private NutritionFacts(Builder builder) {
+        servingSize = builder.servingSize;
+        servings = builder.servings;
+        calories = builder.calories;
+        fat = builder.fat;
+        sodium = builder.sodium;
+        carbohydrate = builder.carbohydrate;
+    }
+}
+```
+
+빌더의 setter 메소드들은 빌더 자신을 반환하기 때문에 연쇄적으로 호출할 수 있다.
+
+```java
+NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8)
+    .calories(100)
+    .sodium(35)
+    .carbohydrate(27)
+    .build();
+```
+
+빌더만 구현해놓으면 객체를 생성하기도 쉽고, 무엇보다도 가독성이 좋다.
+
+이러한 빌더 패턴은 계층적으로 설계된 클래스와 함께 쓰기 좋다.
+
+빌더 생성 비용이 크지는 않지만 성능이 중요한 상황에서는 문제가 될 수 있다.
+
+또한 빌더 구현 자체가 점층적 생성자 패턴보다 코드량이 많으므로 매개변수가 충분히 많은 상황에서 사용하는걸 추천한다.
