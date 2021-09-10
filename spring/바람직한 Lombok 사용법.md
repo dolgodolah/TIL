@@ -11,6 +11,7 @@
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
+@EqualsAndHashCode(of = {"id"})
 public class Member {
 
     @Id
@@ -71,7 +72,20 @@ public class Member {
 
 이는 Member 객체 생성을 위해서는 빌더를 통한 생성으로만 제한할 수 있다.
 
-## 3. @Builder
+## 3. EqualsAndHashCode(of = {"id"})
+
+```java
+@EqualsAndHashCode(of = {"id"})
+public class Member {
+```
+
+equals()와 hashCode()를 생성해준다.
+
+default는 static이나 transient를 제외한 모든 필드들이 대상이 된다.
+
+of를 통해 특정 필드들을 명시할 수 있고, exclude를 통해 특정 필드를 제외할 수 있다.
+
+## 4. @Builder
 
 빌더 패턴을 통해 객체 생성을 위해서는 [Builder 생성자에 대한 구현](https://github.com/dolgodolah/TIL/blob/master/java/%EC%9D%B4%ED%8E%99%ED%8B%B0%EB%B8%8C%20%EC%9E%90%EB%B0%94/%EC%95%84%EC%9D%B4%ED%85%9C2.%20%EC%83%9D%EC%84%B1%EC%9E%90%EC%97%90%20%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98%EA%B0%80%20%EB%A7%8E%EB%8B%A4%EB%A9%B4%20%EB%B9%8C%EB%8D%94%EB%A5%BC%20%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC.md) 이 필요하다.
 
