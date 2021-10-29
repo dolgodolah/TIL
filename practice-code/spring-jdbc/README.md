@@ -1,4 +1,6 @@
-# 스프링 DB 접근 기술
+# 0. Overview
+
+스프링에서 DB 접근하는 기술들에 대해 공부해본다.
 
 ### 사용 기술
 - Spring Boot
@@ -117,7 +119,7 @@ Post post = em.find(Post.class, id);
 - 하지만 pk 기반이 아닐 때는 JPQL을 작성해야 한다.
 
 ````java
-em.createQuery("select p from Post p", Post.class).getResultList();
+List<Post> posts = em.createQuery("select p from Post p", Post.class).getResultList();
 ````
 <br>
 
@@ -127,7 +129,62 @@ em.createQuery("select p from Post p", Post.class).getResultList();
 
 # 3. Spring Data JPA
 
-JPA 기술을 스프링에서 한번 감싸서 제공하는 기술로 pk 기반이 아니어도 JPQL을 작성하지 않아도 된다.
+## 3.1 의존 라이브러리
+
+JPA 설정 방법과 동일하다.
+
+```
+dependencies {
+    // implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+}
+```
+
+## 3.2 사용 방법
+
+기본 JPA와 마찬가지로 DB 테이블과 매핑시킬 클래스에 `@Entity`를 명시해야 한다.
+
+```java
+@Entity
+public class Post {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String author;
+    private String content;
+    ...
+}
+```
+
+<br>
+
+그리고 스프링 데이터 JPA에서 제공하는 `JpaRepository<T, ID>`를 상속받는다.
+
+구현 클래스없이 인터페이스만으로 개발을 완료할 수 있다.
+
+```java
+import org.springframework.data.jpa.repository.JpaRepository;
+...
+public interface SpringDataJpaPostDao extends JpaRepository<Post, Long>, PostDao {
+
+    @Override
+    Post save(Post post);
+
+    @Override
+    Optional<Post> findById(Long aLong);
+
+    @Override
+    Optional<Post> findByAuthor(String author);
+
+    @Override
+    List<Post> findAll();
+}
+
+```
+
+PK 기반이 아닐 때는 JPQL을 작성해야 했던 JPA와는 달리, Spring Data JPA는 기본 CRUD 기능을 모두 제공한다.
+
+<br>
 
 #### 빈을 등록하는 방법은 3가지가 있다.
 - 컴포넌트 스캔 : 위 코드처럼 `@Repository`를 통해 의존관계 설정
