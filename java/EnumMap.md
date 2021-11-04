@@ -33,9 +33,9 @@ System.out.println(plan.toString()); // {MON=TV보기, TUE=공부하기}
 
 ```java
 Map<Day, String> map = new HashMap<>();
-map.put(Day.MON, "공부하기"); // Map이 비어있으면 Specified map is empty 예외 발생
+map.put(Day.MON, "공부하기"); 
 
-Map<Day, String> plan = new EnumMap<>(map);
+Map<Day, String> plan = new EnumMap<>(map); // map이 비어있으면 Specified map is empty 예외 발생한다. 원소가 있는 map을 생성자에 넣어주어야 한다.
 plan.put(Day.MON, "영화보기");
 
 System.out.println(plan.toString()); // {MON=공부하기, TUE=영화보기}
