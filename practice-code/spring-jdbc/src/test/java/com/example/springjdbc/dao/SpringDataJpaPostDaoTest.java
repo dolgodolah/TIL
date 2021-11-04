@@ -1,5 +1,6 @@
 package com.example.springjdbc.dao;
 
+import com.example.springjdbc.dao.springjpa.SpringDataJpaPostDao;
 import com.example.springjdbc.entity.Post;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest

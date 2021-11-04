@@ -1,5 +1,6 @@
-package com.example.springjdbc.dao;
+package com.example.springjdbc.dao.jdbctemplate;
 
+import com.example.springjdbc.dao.MemberDao;
 import com.example.springjdbc.entity.Member;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class JdbcMemberDao implements MemberDao{
+public class JdbcMemberDao implements MemberDao {
 
     private final JdbcTemplate jdbcTemplate;
 

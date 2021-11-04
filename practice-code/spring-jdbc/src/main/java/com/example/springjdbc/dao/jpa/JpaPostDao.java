@@ -1,5 +1,6 @@
-package com.example.springjdbc.dao;
+package com.example.springjdbc.dao.jpa;
 
+import com.example.springjdbc.dao.PostDao;
 import com.example.springjdbc.entity.Member;
 import com.example.springjdbc.entity.Post;
 

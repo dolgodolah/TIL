@@ -1,7 +1,7 @@
 package com.example.springjdbc;
 
-import com.example.springjdbc.dao.JdbcMemberDao;
-import com.example.springjdbc.dao.JpaPostDao;
+import com.example.springjdbc.dao.jdbctemplate.JdbcMemberDao;
+import com.example.springjdbc.dao.jpa.JpaPostDao;
 import com.example.springjdbc.dao.MemberDao;
 import com.example.springjdbc.dao.PostDao;
 import org.springframework.context.annotation.Bean;
