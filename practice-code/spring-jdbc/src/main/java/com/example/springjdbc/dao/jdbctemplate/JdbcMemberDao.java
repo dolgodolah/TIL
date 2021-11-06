@@ -18,18 +18,20 @@ import java.util.Optional;
 public class JdbcMemberDao implements MemberDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final SimpleJdbcInsert jdbcInsert;
 
     public JdbcMemberDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.jdbcInsert = new SimpleJdbcInsert(dataSource)
+                .withTableName("member")
+                .usingGeneratedKeyColumns("id");
     }
 
     @Override
     public Member save(Member member) {
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-        jdbcInsert.withTableName("member").usingGeneratedKeyColumns("id");
-
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", member.getName());
+        parameters.put("age", member.getAge());
 
         Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
         member.setId(key.longValue());
@@ -65,6 +67,7 @@ public class JdbcMemberDao implements MemberDao {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
+                member.setAge(rs.getInt("age"));
                 return member;
             }
         };
