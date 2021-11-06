@@ -5,20 +5,6 @@
 `오늘 배운 내용을 기록합니다. 작은 지식이 모이면 큰 지식이 됩니다.`
 
 
-
-지난 목표
-- <del> 코딩테스트 준비 - 100문제(1월)
-- <del> 코딩테스트 준비 - 200문제(2월)
-- <del> 코딩테스트 준비 - 300문제(3월)
-- <del> 토이프로젝트 'My Playlists' 개발 (4월)
-- <del> 카카오 여름 인턴십 코딩테스트 (5월)
-- <del> 토이프로젝트 'My-Playlists' AWS 배포 (5월)
-- <del> 알고리즘 복습 (5월)
-- <del> 스프링 인 액션 챕터4(스프링 시큐리티), 챕터6(REST 서비스 생성하기), 챕터7(REST 서비스 사용하기)
-- <del> 로그인 관련 다양한 로직 구현(이메일인증, 2단계 인증)
-
-현재 목표
-- 오브젝트(객체지향설계) 스터디
-- 이펙티브 자바 스터디
-
-
+`개발왕이 되는 그 날까지`
+- [Java](https://github.com/dolgodolah/TIL/tree/master/java)
+- [Spring](https://github.com/dolgodolah/TIL/tree/master/spring)
