@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class PostDaoTest {
+class JpaPostDaoTest {
 
     private static final String AUTHOR = "홍길동";
     private static final String CONTENT = "오늘 날씨 맑음 내일 날씨 흐림";

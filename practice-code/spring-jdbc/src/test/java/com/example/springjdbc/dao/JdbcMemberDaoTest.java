@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-class MemberDaoTest {
+class JdbcMemberDaoTest {
 
     private static final String NAME = "홍길동";
     @Autowired MemberDao memberDao;
@@ -69,5 +69,18 @@ class MemberDaoTest {
         List<Member> members = memberDao.findAll();
 
         assertThat(members.size()).isEqualTo(expected);
+    }
+
+    @Test
+    void 회원가입_후_회원탈퇴() {
+        Member member = new Member();
+        member.setName(NAME);
+        Member saveMember = memberDao.save(member);
+
+        memberDao.deleteById(saveMember.getId());
+
+        Optional<Member> result = memberDao.findById(saveMember.getId());
+
+        assertThat(result).isEmpty();
     }
 }

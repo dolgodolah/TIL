@@ -53,6 +53,11 @@ public class JdbcMemberDao implements MemberDao {
         return jdbcTemplate.query("select * from member", memberRowMapper());
     }
 
+    @Override
+    public void deleteById(Long id) {
+        jdbcTemplate.update("delete from member where id = ?", id);
+    }
+
     private RowMapper<Member> memberRowMapper() {
         return new RowMapper<Member>() {
             @Override
