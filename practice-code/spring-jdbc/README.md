@@ -7,14 +7,20 @@
 - JdbcTemplate
 - JPA
 - 스프링 데이터 JPA
+- H2
 
 # 1. JdbcTemplate
 
+`JdbcTemplate`은 DB에 접근하기 위해 SQL 연산을 수행할 수 있도록 도와주는 기술 중 하나이다.
+
 ## 1.1 의존 라이브러리
 
-순수 JDBC와 동일한 환경설정을 하면 된다.
+순수 JDBC와 동일하게 `spring-boot-starter-jdbc` 라이브러리를 추가하면 된다.
 
-```
+`spring-boot-starter-jdbc`는 DB에 접근할 수 있도록 API를 정의 해놓은 라이브러리이다.
+
+```gradle
+// build.gradle
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     runtimeOnly 'com.h2database:h2'
@@ -24,6 +30,7 @@ dependencies {
 ## 1.2 사용 방법
 
 ```properties
+# application.properties
 spring.datasource.url=jdbc:h2:tcp://localhost/~/test
 spring.datasource.driver-class-name=org.h2.Driver
 spring.datasource.username=sa
@@ -43,17 +50,127 @@ public class JdbcMemberDao implements MemberDao{
 }
 ```
 
-JdbcTemplate을 사용하기 위해서는 JdbcTemplate 생성자에 `application.properties`에 정의한 dataSource가 주입돼야 한다.
+`JdbcTemplate`을 사용하기 위해서는 JdbcTemplate 생성자에 `dataSource`가 주입돼야 한다.
 
 ## 1.3 특징
-- 스프링 JdbcTemplate과 MyBatis 같은 라이브러리는 순수 Jdbc의 반복 코드를 대부분 제거해준다.
+- 스프링 `JdbcTemplate`과 `MyBatis` 같은 라이브러리는 순수 Jdbc의 반복 코드를 대부분 제거해준다.
 
 - 하지만 SQL은 직접 작성해야 한다.
 
 ```java
+// ex)
 @Override
 public Optional<Member> findById(Long id) {
     List<Member> result = jdbcTemplate.query("select * from member where id = ?", memberRowMapper(), id);
+    return result.stream().findAny();
+}
+```
+
+## 1.4 메소드
+
+`update()`, `queryForObject()`, `query()`를 통해 SQL 연산을 수행하도록 할 수 있다.
+
+### 1.4.1 update()
+
+`update()`는 SQL 연산을 통해 데이터베이스를 갱신시킬 때 사용한다.
+
+```java
+// INSERT
+jdbcTemplate.update("insert into member(id, name, age) values(?, ?, ?)", member.getId(), member.getName(), member.getAge());
+
+// UPDATE
+jdbcTemplate.update("update member set name=? where id=?", member.getName(), member.getId());
+
+// DELETE
+jdbcTemplate.update("delete from member where id=?", member.getId());
+```
+
+<br>
+
+INSERT 연산은 `SimpleJdbcInsert`를 이용하는 것이 좋다.
+
+```java
+public Member save(Member member) {
+    SimpleJdbcInsert jdbcInseret = new SimpleJdbcInsert(jdbcTemplate)
+        .withTableName("member")
+        .usingGeneratedKeyColumns("id");
+    
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("name", member.getName());
+    parameters.put("age", member.getAge());
+
+    Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
+    member.setId(key.longValue());
+    return member;
+}
+```
+
+
+### 1.4.2 queryForObject()
+
+SELECT 연산 후 하나의 객체 결과 값이 나올 때 사용한다.
+
+```java
+// 총 멤버 수 구할 때
+public int getAllMemberCount() {
+    return jdbcTemplate.queryForObject("select count(*) from member", Integer.class);
+}
+
+
+// Member 객체 가져올 때
+public Member findById(Long id) {
+    return jdbcTemplate.queryForObject("select * from member where id =?",
+        new RowMapper<Member>(){
+            public Member mapRow(ResultSet rs,int rowNum)throws SQLException{
+                Member member = new Member();
+                member.setId(rs.getLong("id"));
+                member.setName(rs.getString("name"));
+                member.setAge(rs.getInt("age"));
+                return member;
+            }
+        }, id);
+}
+
+    
+```
+
+### 1.4.3 query()
+
+하나의 객체만 가져왔던 `queryForObject()`와 달리 많은 결과 값을 리스트로 가져와 처리할 수 있다.
+
+```java
+public List<Member> findAll() {
+    return jdbcTemplate.query("select * from member",
+        new RowMapper<Member>(){
+            public Member mapRow(ResultSet rs,int rowNum)throws SQLException{
+                Member member = new Member();
+                member.setId(rs.getLong("id"));
+                member.setName(rs.getString("name"));
+                member.setAge(rs.getInt("age"));
+                return member;
+            });
+        }
+}
+```
+
+<br>
+
+`query()`로 하나의 멤버 객체에 대해 처리하고 싶을 때는 이렇게 활용하면 된다.
+
+```java
+public Optional<Member> findById(Long id) {
+    
+    List<Member> result = jdbcTemplate.query("select * from member where id = ?",
+        new RowMapper<Member>() {
+            @Override
+            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Member member = new Member();
+                member.setId(rs.getLong("id"));
+                member.setName(rs.getString("name"));
+                member.setAge(rs.getInt("age"));
+                return member;
+            }
+        }, id);
     return result.stream().findAny();
 }
 ```
@@ -64,7 +181,7 @@ public Optional<Member> findById(Long id) {
 
 ## 2.1 의존 라이브러리
 
-```
+```build.gradle
 dependencies {
     // implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
