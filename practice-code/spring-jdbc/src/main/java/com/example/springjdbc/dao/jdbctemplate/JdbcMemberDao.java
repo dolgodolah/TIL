@@ -56,6 +56,11 @@ public class JdbcMemberDao implements MemberDao {
     }
 
     @Override
+    public int getAllMemberCount() {
+        return jdbcTemplate.queryForObject("select count(*) from member", Integer.class);
+    }
+
+    @Override
     public void deleteById(Long id) {
         jdbcTemplate.update("delete from member where id = ?", id);
     }
