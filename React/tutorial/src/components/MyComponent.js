@@ -32,7 +32,6 @@ function BlackDog() {
     }
 }
 
-// 화살표 function
 function WhiteDog() {
     this.name = '검둥이';
     return {
