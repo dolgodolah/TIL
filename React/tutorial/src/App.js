@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import {Component} from "react";
-import MyComponent from "./components/MyComponent";
+import MyComponent from "./03_Component/MyComponent";
 
 const App = () => {
-  return <MyComponent />;
+  return <MyComponent>리액트</MyComponent>
 }
 
 // 클래스 컴포넌트

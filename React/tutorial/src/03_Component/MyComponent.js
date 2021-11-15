@@ -17,10 +17,6 @@ setTimeout(() => {
 }, 1000);
  */
 
-const MyComponent = () => {
-    return <div>새로운 컴포넌트</div>
-}
-
 function BlackDog() {
     this.name = '흰둥이';
     return {
@@ -62,5 +58,22 @@ const triple = (value) => value * 3;
 이처럼 기존 function과 화살표 function에는 차이가 있지만 함수형 컴포넌트를 선언할 때는 큰 차이가 없다.
 어떤 방식을 선택할지는 취향이다.
  */
+
+
+const MyComponent = props => {
+    const {name, children} = props;
+    return (
+        <div>
+            안녕하세요, 제 이름은 {name}입니다. <br />
+            children 값은 {children}입니다.
+        </div>
+    )
+}
+
+MyComponent.defaultProps = {
+    name: '홍길동'
+};
+
+
 
 export default MyComponent;
