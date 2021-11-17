@@ -2,6 +2,7 @@ package com.example.springjdbc.dao.jdbctemplate;
 
 import com.example.springjdbc.dao.MemberDao;
 import com.example.springjdbc.entity.Member;
+import com.example.springjdbc.entity.MemberType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -32,6 +33,7 @@ public class JdbcMemberDao implements MemberDao {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", member.getName());
         parameters.put("age", member.getAge());
+        parameters.put("member_type", member.getMemberType());
 
         Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
         member.setId(key.longValue());
@@ -73,6 +75,13 @@ public class JdbcMemberDao implements MemberDao {
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
                 member.setAge(rs.getInt("age"));
+                member.setMemberType(MemberType.valueOf(rs.getString("member_type")));
+                /*
+                Enum을 String으로 저장했을 땐 valueOf()로 캐스팅
+                Enum을 int로 저장했을 땐 values()에서 index를 통해 캐스팅해야 됨
+                member.setMemberType(MemberType.values()[rs.getInt("member_type") - 1]);
+                 */
+
                 return member;
             }
         };

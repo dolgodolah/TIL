@@ -1,6 +1,7 @@
 package com.example.springjdbc.dao;
 
 import com.example.springjdbc.entity.Member;
+import com.example.springjdbc.entity.MemberType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -27,11 +28,13 @@ class JdbcMemberDaoTest {
         Member member = new Member();
         member.setName(NAME);
         member.setAge(AGE);
+        member.setMemberType(MemberType.USER);
         
         Member result = memberDao.save(member);
 
-        assertThat(result.getName()).isEqualTo(NAME);
-        assertThat(result.getAge()).isEqualTo(AGE);
+        assertThat(result.getName()).isEqualTo(member.getName());
+        assertThat(result.getAge()).isEqualTo(member.getAge());
+        assertThat(result.getMemberType()).isEqualTo(member.getMemberType());
     }
 
     @Test
@@ -39,6 +42,7 @@ class JdbcMemberDaoTest {
         Member member = new Member();
         member.setName(NAME);
         member.setAge(AGE);
+        member.setMemberType(MemberType.USER);
         Member saveMember = memberDao.save(member);
 
         Optional<Member> result = memberDao.findById(saveMember.getId());
@@ -47,6 +51,7 @@ class JdbcMemberDaoTest {
         assertThat(result.get().getId()).isEqualTo(saveMember.getId());
         assertThat(result.get().getName()).isEqualTo(saveMember.getName());
         assertThat(result.get().getAge()).isEqualTo(saveMember.getAge());
+        assertThat(result.get().getMemberType()).isEqualTo(saveMember.getMemberType());
     }
 
     @ParameterizedTest
@@ -55,6 +60,7 @@ class JdbcMemberDaoTest {
         Member member = new Member();
         member.setName(input);
         member.setAge(AGE);
+        member.setMemberType(MemberType.ADMIN);
         Member saveMember = memberDao.save(member);
 
         Optional<Member> result = memberDao.findByName(input);
@@ -63,6 +69,7 @@ class JdbcMemberDaoTest {
         assertThat(result.get().getId()).isEqualTo(saveMember.getId());
         assertThat(result.get().getName()).isEqualTo(saveMember.getName());
         assertThat(result.get().getAge()).isEqualTo(saveMember.getAge());
+        assertThat(result.get().getMemberType()).isEqualTo(saveMember.getMemberType());
     }
 
     @ParameterizedTest
@@ -71,6 +78,7 @@ class JdbcMemberDaoTest {
         for (int i = 0; i < input; i++) {
             Member member = new Member();
             member.setName(NAME + i);
+            member.setMemberType(MemberType.USER);
             memberDao.save(member);
         }
 
