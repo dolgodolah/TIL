@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react';
+import PropTypes from 'prop-types'
+
 
 
 /*
@@ -29,7 +31,7 @@ function BlackDog() {
 }
 
 function WhiteDog() {
-    this.name = '검둥이';
+    this.name = '흰둥이';
     return {
         name: '검둥이',
         // 화살표 function
@@ -51,8 +53,11 @@ whiteDog.bark(); // 흰둥이 : 멍멍!
  */
 
 
-// 화살표 함수를 사용하면 가독성을 높일 수 있다.
-const triple = (value) => value * 3;
+/*
+ 화살표 함수를 사용하면 가독성을 높일 수 있다.
+ const triple = (value) => value * 3;
+ */
+
 
 /*
 이처럼 기존 function과 화살표 function에는 차이가 있지만 함수형 컴포넌트를 선언할 때는 큰 차이가 없다.
@@ -60,20 +65,37 @@ const triple = (value) => value * 3;
  */
 
 
-const MyComponent = props => {
-    const {name, children} = props;
+const MyComponent = ({name, children, favoriteNumber}) => {
     return (
         <div>
             안녕하세요, 제 이름은 {name}입니다. <br />
-            children 값은 {children}입니다.
+            children 값은 {children}입니다. <br />
+            제가 좋아하는 숫자는 {favoriteNumber}입니다. <br />
         </div>
     )
 }
 
+class MyClassComponent extends Component {
+    render() {
+        const {name, children, favoriteNumber} = this.props;
+        return (
+            <div>
+                안녕하세요, 제 이름은 {name}입니다. <br />
+                children 값은 {children}입니다. <br />
+                제가 좋아하는 숫자는 {favoriteNumber}입니다. <br />
+            </div>
+        );
+    }
+}
+
 MyComponent.defaultProps = {
-    name: '홍길동'
+    name: '홍길동',
 };
 
+MyComponent.propTypes = {
+    name: PropTypes.string,
+    favoriteNumber: PropTypes.number.isRequired,
+}
 
 
 export default MyComponent;

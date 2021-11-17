@@ -4,7 +4,7 @@ import {Component} from "react";
 import MyComponent from "./03_Component/MyComponent";
 
 const App = () => {
-  return <MyComponent>리액트</MyComponent>
+  return <MyComponent name="홍길동" favoriteNumber={7}>리액트</MyComponent>
 }
 
 // 클래스 컴포넌트
