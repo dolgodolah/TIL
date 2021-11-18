@@ -2,9 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import {Component} from "react";
 import MyComponent from "./03_Component/MyComponent";
+import Counter from "./03_Component/Counter";
 
 const App = () => {
-  return <MyComponent name="홍길동" favoriteNumber={7}>리액트</MyComponent>
+  return (
+      <div>
+        <MyComponent name="홍길동" favoriteNumber={7}>리액트</MyComponent>
+        <Counter />
+      </div>
+  )
 }
 
 // 클래스 컴포넌트
