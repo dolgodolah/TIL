@@ -3,12 +3,14 @@ import './App.css';
 import {Component} from "react";
 import MyComponent from "./03_Component/MyComponent";
 import Counter from "./03_Component/Counter";
+import Say from "./03_Component/Say";
 
 const App = () => {
   return (
       <div>
         <MyComponent name="홍길동" favoriteNumber={7}>리액트</MyComponent>
         <Counter />
+        <Say />
       </div>
   )
 }
