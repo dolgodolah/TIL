@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
+import static java.util.stream.Collectors.*; // Collectors의 멤버를 정적 임포트하여 쓰면 스트림 파이프라인 가독성이 좋아진다. Collectors.toList() -> toList()
 
 @SpringBootTest
 class StreamApplicationTests {
@@ -227,5 +228,19 @@ class StreamApplicationTests {
 
 		assertThat(counter.getCount()).isEqualTo(1);
 		assertThat(size1).isEqualTo(size2);
+	}
+
+	@Test
+	void 가장_많이_나온_단어_2개_뽑기() {
+		List<String> words = Arrays.asList("apple", "apple", "apple", "banana", "cacao", "cacao");
+		Map<String, Long> freq = words.stream().collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
+
+		List<String> result = freq.keySet().stream()
+				.sorted(Comparator.comparing(freq::get).reversed())
+				.limit(2)
+				.collect(Collectors.toList());
+
+		assertThat(result.get(0)).isEqualTo("apple");
+		assertThat(result.get(1)).isEqualTo("cacao");
 	}
 }
