@@ -1,42 +1,42 @@
 import './ValidationSample.css'
-import {useState} from "react";
+import {Component, useState} from "react";
 
-const ValidationSample = () => {
-    const [ state, setState ] = useState({
+class ValidationSample extends Component {
+    state = {
         password: '',
         clicked: false,
         validated: false
-    });
-    const { password, clicked, validated } = state;
+    }
 
-    const onChange = (e) => {
-        const nextState = {
-            ...state,
+    handleChange = (e) => {
+        this.setState({
             password: e.target.value
-        };
-        setState(nextState)
+        });
     }
 
-    const onClick = () => {
-        const nextState = {
-            ...state,
+    handleButtonClick = () => {
+        this.setState({
             clicked: true,
-            validated: state.password === '0000'
-        };
-        setState(nextState)
+            validated: this.state.password === '0000'
+        })
+        this.input.focus(); // 버튼을 누르면 포커스가 this.input 으로 가도록 함
     }
 
-    return (
-        <div>
-            <input
-                type="password"
-                value={ password }
-                onChange={ onChange }
-                className={ clicked ? (validated ? 'success' : 'failure') : '' }
-            />
-            <button onClick={ onClick }>검증하기</button>
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                <input
+                    ref={(ref) => this.input=ref}
+                    type="password"
+                    value={ this.state.password }
+                    onChange={ this.handleChange }
+                    className={ this.state.clicked ? (this.state.validated ? 'success' : 'failure') : '' }
+                />
+                <button onClick={ this.handleButtonClick }>검증하기</button>
+            </div>
+        )
+    }
+
 }
 
 export default ValidationSample;
