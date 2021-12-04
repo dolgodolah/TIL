@@ -5,9 +5,11 @@ import MyComponent from "./03_Component/MyComponent";
 import Counter from "./03_Component/Counter";
 import Say from "./03_Component/Say";
 import EventPractice from "./04_Event Handling/EventPractice";
+import ValidationSample from "./05_ref/ValidationSample";
 
 const App = () => {
-    return <EventPractice />;
+    return <ValidationSample />;
+    // return <EventPractice />;
     // return (
     //     <div>
     //         <MyComponent name="홍길동" favoriteNumber={7}>리액트</MyComponent>
