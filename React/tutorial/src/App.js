@@ -6,9 +6,11 @@ import Counter from "./03_Component/Counter";
 import Say from "./03_Component/Say";
 import EventPractice from "./04_Event Handling/EventPractice";
 import ValidationSample from "./05_ref/ValidationSample";
+import IterationSample from "./06_Multiple Components/IterationSample";
 
 const App = () => {
-    return <ValidationSample />;
+    return <IterationSample />;
+    // return <ValidationSample />;
     // return <EventPractice />;
     // return (
     //     <div>
