@@ -9,30 +9,52 @@ import ValidationSample from "./05_ref/ValidationSample";
 import IterationSample from "./06_Multiple Components/IterationSample";
 import LifeCycleSample from "./07_Component Life Cycle/LifeCycleSample";
 import ErrorBoundary from "./07_Component Life Cycle/ErrorBoundary";
+import Info from "./08_Hooks/Info";
 
 function getRandomColor() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 const App = () => {
-    const [color, setColor] = useState('#000000');
+    return <Info />;
 
-    const handleClick = () => {
-        setColor(getRandomColor());
-    }
-    return (
-        <div>
-            <button onClick={handleClick}>랜덤 색상</button>
-            <ErrorBoundary>
-                <LifeCycleSample color={color} />
-            </ErrorBoundary>
+    /*
+    07_Component Life Cycle
+     */
+    // const [color, setColor] = useState('#000000');
+    //
+    // const handleClick = () => {
+    //     setColor(getRandomColor());
+    // }
+    // return (
+    //     <div>
+    //         <button onClick={handleClick}>랜덤 색상</button>
+    //         <ErrorBoundary>
+    //             <LifeCycleSample color={color} />
+    //         </ErrorBoundary>
+    //
+    //     </div>
+    //
+    // )
 
-        </div>
-
-    )
+    /*
+    06_Multiple Components
+     */
     // return <IterationSample />;
+
+    /*
+    05_ref
+     */
     // return <ValidationSample />;
+
+    /*
+    04_Event Handling
+     */
     // return <EventPractice />;
+
+    /*
+    03_Component
+     */
     // return (
     //     <div>
     //         <MyComponent name="홍길동" favoriteNumber={7}>리액트</MyComponent>
