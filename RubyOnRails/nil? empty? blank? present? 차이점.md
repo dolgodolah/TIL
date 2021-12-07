@@ -134,6 +134,9 @@ person.present?
 
 # 결론
 
+<img width="609" alt="스크린샷 2021-12-07 오후 4 31 15" src="https://user-images.githubusercontent.com/75430912/144986289-a27fb785-ba84-440e-a2e5-6cb08b44342d.png">
+
+
 # 참조
 
 [https://blog.appsignal.com/2018/09/11/differences-between-nil-empty-blank-and-present.html](https://blog.appsignal.com/2018/09/11/differences-between-nil-empty-blank-and-present.html)
