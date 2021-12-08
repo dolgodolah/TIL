@@ -10,13 +10,27 @@ import IterationSample from "./06_Multiple Components/IterationSample";
 import LifeCycleSample from "./07_Component Life Cycle/LifeCycleSample";
 import ErrorBoundary from "./07_Component Life Cycle/ErrorBoundary";
 import Info from "./08_Hooks/Info";
+import Counter2 from "./08_Hooks/Counter";
+import Average from "./08_Hooks/Average";
 
 function getRandomColor() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 const App = () => {
-    return <Info />;
+    return <Average />;
+    // return <Info />;
+    // return <Counter2 />;
+    // const [visible, setVisible] = useState(false);
+    // return (
+    //     <div>
+    //         <button onClick={() => setVisible(!visible) }>
+    //             {visible ? '숨기기' : '보이기'}
+    //         </button>
+    //         <hr />
+    //         {visible && <Info />}
+    //     </div>
+    // );
 
     /*
     07_Component Life Cycle
