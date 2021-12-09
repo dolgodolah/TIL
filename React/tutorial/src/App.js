@@ -12,13 +12,26 @@ import ErrorBoundary from "./07_Component Life Cycle/ErrorBoundary";
 import Info from "./08_Hooks/Info";
 import Counter2 from "./08_Hooks/Counter";
 import Average from "./08_Hooks/Average";
+import TodoTemplate from "./10_ToDoList/TodoTemplate";
+import TodoInsert from "./10_ToDoList/TodoInsert";
+import TodoList from "./10_ToDoList/TodoList";
 
 function getRandomColor() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 const App = () => {
-    return <Average />;
+    return (
+        <TodoTemplate>
+            <TodoInsert />
+            <TodoList />
+        </TodoTemplate>
+    );
+
+    /*
+    08_Hooks
+     */
+    // return <Average />;
     // return <Info />;
     // return <Counter2 />;
     // const [visible, setVisible] = useState(false);
