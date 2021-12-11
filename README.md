@@ -8,4 +8,4 @@
 `개발왕이 되는 그 날까지`
 - [Java](https://github.com/dolgodolah/TIL/tree/master/java)
 - [Spring](https://github.com/dolgodolah/TIL/tree/master/spring)
-- [practice-code](https://github.com/dolgodolah/TIL/tree/master/practice-code)
+- [React](https://github.com/dolgodolah/TIL/tree/master/React)
