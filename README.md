@@ -7,5 +7,5 @@
 
 `개발왕이 되는 그 날까지`
 - [Java](https://github.com/dolgodolah/TIL/tree/master/java)
-- [Spring](https://github.com/dolgodolah/TIL/tree/master/spring)
+- [Spring](https://github.com/dolgodolah/TIL/tree/master/Spring)
 - [React](https://github.com/dolgodolah/TIL/tree/master/React)
