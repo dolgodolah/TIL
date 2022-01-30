@@ -1,7 +1,5 @@
 # @NotNull vs @Column(nullable = false)
 
-
-
 평소 `@Column(nullable = false)`을 통해 해당 컬럼에 제약조건을 걸었는데 어떤 코드에는 `@NotNull` 어노테이션이 사용된다.
 
 ```java

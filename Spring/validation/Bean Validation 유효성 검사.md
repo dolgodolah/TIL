@@ -4,12 +4,10 @@
 
 ## gradle DI
 
-원래는 	spring-boot-starter-web를 포함하고 있다면 Validation Starter도 포함되어 있기 때문에 따로 추가할 필요가 없다는데 아무리해도 validation 관련한 라이브러리들이 import 되지가 않았다.
-
-그래서 build.gradle에 spring-boot-starter-validation를 추가함으로써 사용했다.
+build.gradle에 spring-boot-starter-validation를 추가했다.
 
 ```
-implementation 'org.springframework.boot:spring-boot-starter-web'
+implementation 'org.springframework.boot:spring-boot-starter-validation'
 ```
 
 ## 주요 어노테이션
