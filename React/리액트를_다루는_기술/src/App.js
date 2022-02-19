@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {Component, useState} from "react";
+import {Component, useCallback, useRef, useState} from "react";
 import MyComponent from "./03_Component/MyComponent";
 import Counter from "./03_Component/Counter";
 import Say from "./03_Component/Say";
@@ -38,9 +38,24 @@ const App = () => {
             checked: false
         },
     ]);
+
+    const nextId = useRef(4);
+
+    const onInsert = useCallback(
+        text => {
+            const todo = {
+                id: nextId.current,
+                text: text,
+                checked: false,
+            };
+            setTodos(todos.concat(todo));
+            nextId.current += 1;
+        },
+        [todos]
+    );
     return (
         <TodoTemplate>
-            <TodoInsert />
+            <TodoInsert onInsert={onInsert}/>
             <TodoList todos={todos} />
         </TodoTemplate>
     );
