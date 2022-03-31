@@ -9,6 +9,24 @@ Document 인터페이스의 domain 속성은 **동일 출처 정책에서 사용
 
 이럴 때 `document.domain`을 설정하여 동일 출처 정책을 통과할 수 있다.
 
+1. naver.com(부모)에서 m.naver.com(자식) 팝업 띄움
+<img width="1102" alt="스크린샷 2022-03-31 오후 9 54 47" src="https://user-images.githubusercontent.com/75430912/161064959-625cef77-b035-42a7-bbd3-5ac9cbe146bf.png">
+
+2. m.naver.com(자식)에서 naver.com(부모) 페이지를 reload 해보지만 cross-origin으로 인한 동일 출처 정책 위반
+<img width="1102" alt="스크린샷 2022-03-31 오후 9 55 04" src="https://user-images.githubusercontent.com/75430912/161064955-e0df6275-5c82-44b4-93e4-89cc1e0d4c74.png">
+
+3. naver.com(부모)와 m.naver.com(자식)의 document.domain을 루트 도메인인 'naver.com'로 설정
+<img width="1102" alt="스크린샷 2022-03-31 오후 9 55 37" src="https://user-images.githubusercontent.com/75430912/161064951-6e1e65dd-15dc-442f-aa94-480b835d4258.png">
+<img width="1102" alt="스크린샷 2022-03-31 오후 9 55 44" src="https://user-images.githubusercontent.com/75430912/161064946-32a10f61-c015-49bc-b896-2f1e1093e041.png">
+
+4. m.naver.com(자식)에서 naver.com(부모) 페이지를 다시 reload 해보면 성공
+<img width="1102" alt="스크린샷 2022-03-31 오후 9 55 55" src="https://user-images.githubusercontent.com/75430912/161064927-206f6f83-5a15-43a1-987b-7476adced87d.png">
+
+
+
+
+
+
 하지만 https://developer.chrome.com/blog/immutable-document-domain 을 보면 알 수 있듯이
 
 보안상의 문제로 `document.domain`이 deprecated 되었기 때문에 사용을 지양해야 한다.
