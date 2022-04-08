@@ -1,13 +1,15 @@
-# 1. document.domain 이란?
+# 1. document.domain
 
-Document 인터페이스의 domain 속성은 **동일 출처 정책에서 사용하는 현재 문서의 출처에서 도메인 부분을 설정하거나 가져옵니다.**
+"Document 인터페이스의 domain 속성은 **동일 출처 정책에서 사용하는 현재 문서의 출처에서 도메인 부분을 설정하거나 가져옵니다.**"
 > https://developer.mozilla.org/ko/docs/Web/API/Document/domain
 
 <br>
 
-예를 들어 server1.kakao.com(부모 페이지)에서 server2.kakao.com(자식 페이지)을 팝업 혹은 iframe으로 띄웠다고 가정할 때, 이 두 페이지는 `sub domain`이 달라 동일 출처 정책(same-origin policy)으로 인해 리소스 공유가 되지 않는다.
+`server1.kakao.com`(부모 페이지)에서 `server2.kakao.com`(자식 페이지)을 팝업 혹은 iframe으로 띄웠다고 가정할 때 이 두 페이지는 `sub-domain`이 달라 동일 출처 정책(same-origin policy)에 의해 리소스 공유가 되지 않는다.
 
-이럴 때 `document.domain`을 설정하여 동일 출처 정책을 통과할 수 있다.
+이럴 때 `document.domain`을 설정하면 동일 출처 정책을 통과할 수 있다.
+
+## 재현
 
 1. naver.com(부모)에서 m.naver.com(자식) 팝업 띄움
 <img width="1102" alt="스크린샷 2022-03-31 오후 9 54 47" src="https://user-images.githubusercontent.com/75430912/161064959-625cef77-b035-42a7-bbd3-5ac9cbe146bf.png">
@@ -23,16 +25,41 @@ Document 인터페이스의 domain 속성은 **동일 출처 정책에서 사용
 <img width="1102" alt="스크린샷 2022-03-31 오후 9 55 55" src="https://user-images.githubusercontent.com/75430912/161064927-206f6f83-5a15-43a1-987b-7476adced87d.png">
 
 
+## document.domain 은 취약하다
 
+하지만 위 재현에서 보았듯이 `document.domain`은 공격자에 의해서도 설정이 될 수 있다. Chrome에서는 이러한 보안상의 문제로 `document.domain` 수정이 금지될 예정이라고 한다.
 
+(https://developer.chrome.com/blog/immutable-document-domain)
 
-
-하지만 https://developer.chrome.com/blog/immutable-document-domain 을 보면 알 수 있듯이
-
-보안상의 문제로 `document.domain`이 deprecated 되었기 때문에 사용을 지양해야 한다.
+<br>
 
 # 2. document.domain 대체방법
 
-## 2.1 postMessage()
+Chrome뿐 아니라 다른 브라우저들에서도 `document.domain`을 수정하지 못하도록 할 예정이라고 하니 앞으로 `document.domain`을 수정하는 코드는 작성을 지양해야 하며, 기존에 `document.domain`을 수정함으로써 리소스 공유를 하던 서비스들 또한 기능이 작동되지 않게 되기 때문에 대응을 해야 한다.
 
-## 2.2 Channel Messaging API
+Chrome에서는 `document.domain`을 대체할 수 있는 방법으로 `postMessage()` 또는 `Channel Messaging API`를 제안하고 있다.
+
+## postMessage()
+
+`postMessage()`를 통해 부모 페이지와 자식 페이지 간에 메세지를 주고 받을 수 있다.
+
+자식 페이지에서 특정 액션을 수행하고 결과값을 `postMessage()`로 부모 페이지에 전달하게 되면, 부모 페이지에서는 이 메세지를 따른 적절한 처리를 하면 된다.
+
+위 `postMessage()`로 부모 페이지를 reload 시키려면 다음과 같은 구조로 코드를 작성하면 된다.
+
+- In iframe or popup:
+```js
+window.parent.postMessage("loaded");
+```
+
+- In parent
+```js
+window.addEventListener("loaded", receiveMessage, false);
+
+function receiveMessage(event) {
+   // do reload
+   window.location.reload();
+}
+```
+
+## Channel Messaging API
