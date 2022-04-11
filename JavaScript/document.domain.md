@@ -29,8 +29,6 @@
 
 하지만 위 재현에서 보았듯이 `document.domain`은 공격자에 의해서도 설정이 될 수 있다. Chrome에서는 이러한 보안상의 문제로 `document.domain` 수정이 금지될 예정이라고 한다.
 
-(https://developer.chrome.com/blog/immutable-document-domain)
-
 <br>
 
 # 2. document.domain 대체방법
@@ -45,11 +43,11 @@ Chrome에서는 `document.domain`을 대체할 수 있는 방법으로 `postMess
 
 자식 페이지에서 특정 액션을 수행하고 결과값을 `postMessage()`로 부모 페이지에 전달하게 되면, 부모 페이지에서는 이 메세지를 따른 적절한 처리를 하면 된다.
 
-위 `postMessage()`로 부모 페이지를 reload 시키려면 다음과 같은 구조로 코드를 작성하면 된다.
+`postMessage()`로 부모 페이지를 reload 시키려면 다음과 같은 구조로 코드를 작성하면 된다.
 
 - In iframe or popup:
 ```js
-window.parent.postMessage("loaded");
+window.parent.postMessage("loaded", "*");
 ```
 
 - In parent
@@ -62,4 +60,23 @@ function receiveMessage(event) {
 }
 ```
 
+### 주의해야 할 보안 사항
+
+`event listener`를 통해 메세지를 받을 때 항상 신뢰된 사이트에서만 메세지가 온다라는 보장이 없기 때문에 검증 과정없이 아무 메세지를 다 받게 되면 XSS 공격에 취약하다.
+
+그러므로 메세지를 받을 때는 받은 메세지의 출처가 어디인지 도메인 등과 같은 정보가 신뢰할 수 있는 값인지 검증하는 과정이 있어야 한다.
+
+`postMessage()`를 통해 메세지를 보내는 쪽도 주의해야 할 보안 사항은 있다. `postMeesage()`의 두번째 인자에 항상 `*`가 아닌 특정 도메인들을 명시해야 한다.
+
+`*`를 넣게 되면 모든 도메인에 대해 메세지를 보내도록 허용함을 의미하는데 이럴 경우 악성 사이트에서도 해당 메세지를 받을 수 있음을 의미하고 메세지를 통해 전달되는 데이터를 가로챌 수 있게 되기 때문이다.
+
 ## Channel Messaging API
+
+
+# Ref
+
+https://developer.mozilla.org/ko/docs/Web/API/Document/domain
+
+https://developer.chrome.com/blog/immutable-document-domain
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
