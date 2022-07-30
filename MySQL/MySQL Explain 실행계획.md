@@ -18,6 +18,7 @@ EXPLAIN [EXTENDED] SELECT ... FROM ... WHERE ...
 ## EXPLAIN 결과 컬럼별 의미
 
 <img width="612" alt="MySQL Explain" src="https://user-images.githubusercontent.com/75430912/181867514-eca1cae9-d9ee-4a47-81bf-c9af6f6ebfa5.png">
+
 - id : select 아이디로 SELECT를 구분하는 번호
 - table : 참조하는 테이블
 - select_type : select에 대한 타입
