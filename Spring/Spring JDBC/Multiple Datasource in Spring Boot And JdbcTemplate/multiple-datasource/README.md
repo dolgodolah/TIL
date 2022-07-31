@@ -4,7 +4,7 @@
 
 # 테스트 방법
 
-- db1, db2에 user 테이블 생성
+1. db1, db2에 user 테이블 생성
 ```mysql
 create table db1.user (
     `id` int(11) NOT NULL auto_increment,
@@ -19,13 +19,14 @@ create table db2.user (
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;
 ```
 
-- db1, db2에 데이터 추가
+2. db1, db2에 데이터 추가
 ```mysql
 insert db1.user (nickname) values ("nickname1");
 insert db2.user (nickname) values ("nickname10000");
 ```
 
-- 테스트 코드 검증 ([Test Code](https://github.com/dolgodolah/TIL/blob/master/Spring/Spring%20JDBC/Multiple%20Datasource%20in%20Spring%20Boot%20And%20JdbcTemplate/multiple-datasource/src/test/java/com/example/multipledatasource/repository/UserDaoTest.java))
+3. [DbConfig](https://github.com/dolgodolah/TIL/blob/master/Spring/Spring%20JDBC/Multiple%20Datasource%20in%20Spring%20Boot%20And%20JdbcTemplate/multiple-datasource/src/main/java/com/example/multipledatasource/config/DbConfig.java) 작성
+4. 테스트 코드 검증 ([Test Code](https://github.com/dolgodolah/TIL/blob/master/Spring/Spring%20JDBC/Multiple%20Datasource%20in%20Spring%20Boot%20And%20JdbcTemplate/multiple-datasource/src/test/java/com/example/multipledatasource/repository/UserDaoTest.java))
 
 # Reference
 
