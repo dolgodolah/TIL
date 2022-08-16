@@ -1,4 +1,4 @@
-package com.example.designpatterns.singleton;
+package com.example.designpatterns._01_singleton;
 
 public class App {
 
