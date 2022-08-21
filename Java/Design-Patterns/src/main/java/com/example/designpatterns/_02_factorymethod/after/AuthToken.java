@@ -5,6 +5,7 @@ public class AuthToken {
     private String passcode;
     private TokenType type;
     private int expireTime;
+    private User user;
 
     public String getPasscode() {
         return passcode;
@@ -28,6 +29,14 @@ public class AuthToken {
 
     public void setExpireTime(int expireTime) {
         this.expireTime = expireTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
