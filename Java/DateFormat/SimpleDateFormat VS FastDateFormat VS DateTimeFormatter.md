@@ -238,3 +238,10 @@ Java8 에서 지원하는 `DateTimeFormatter`을 사용하도록 리팩토링하
 - [SimpleDateFormat setLenient](https://stackoverflow.com/questions/1905551/make-simpledateformat-parse-fail-on-invalid-dates-e-g-month-is-greater-than)
 
 - [Java SimpleDateFormat 을 쓰지 말아야 할 이유](https://techlog.myoa-universe.com/archives/786)
+
+- `withResolverStyle(ResolverStyle.STRICT)` 설정한 이유 
+  -  존재하지 않는 날짜가 자동 보정되지 않도록 함 - [링크](https://howtodoinjava.com/java/date-time/resolverstyle-strict-date-parsing/)
+
+- yyyy 대신 uuuu를 사용한 이유
+  - `withResolverStyle(ResolverStyle.STRICT)` 설정하고 yyyy 사용하면 에러 발생함 (기원전 이슈) - [링크](https://stackoverflow.com/questions/26393594/using-new-java-8-datetimeformatter-to-do-strict-date-parsing)
+  - 애초에 uuuu 사용을 권장한다고 함 (SimpleDateFormat은 하위호환때문에 쩔수 없이 못바꿨다는 얘기가 있네요) - [링크](https://stackoverflow.com/questions/41177442/uuuu-versus-yyyy-in-datetimeformatter-formatting-pattern-codes-in-java/41178418)
