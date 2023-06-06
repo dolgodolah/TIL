@@ -21,7 +21,7 @@ public class HelloJava {
        8: return
 }
 ```
-- JVM 스펙(https://docs.oracle.com/javase/specs/jvms/se11/html/)에 맞춰 오라클, 아마존, Azul, ... 등에서 구현하여 구현체는 다양하다.
+- JVM 스펙(https://docs.oracle.com/javase/specs/jvms/se11/html/) 에 맞춰 오라클, 아마존, Azul, ... 등에서 구현하여 구현체는 다양하다.
 - JVM은 홀로 제공되지 않고, 최소 제공 단위는 JRE이다.
 
 ## JRE (Java Runtime Enviroment)
